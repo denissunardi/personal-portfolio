@@ -1,21 +1,30 @@
-import HeroSection from '@/components/sections/hero';
-import ContactSection from '@/components/sections/contact';
-import AboutMeSection from '@/components/sections/about-me';
-import SkillsSection from '@/components/sections/skills';
-import ExperienceSection from '@/components/sections/experiences';
-import TestimonialsSection from '@/components/sections/testimonials';
-import WorkSection from '@/components/sections/work';
+import { About } from "@/components/sections/about";
+import { CtaBand } from "@/components/sections/cta-band";
+import { Experience } from "@/components/sections/experience";
+import { Faq } from "@/components/sections/faq";
+import { Hero } from "@/components/sections/hero";
+import { Services } from "@/components/sections/services";
+import { TechStack } from "@/components/sections/tech-stack";
+import { Testimonials } from "@/components/sections/testimonials";
+import { Work } from "@/components/sections/work";
 
+// No wrapper: <main> in the layout is the only one, and each Section paints its
+// own full-bleed surface. Order is the fixed canvas/soft alternation, and it is
+// also the header nav's order — a menu that promises a different sequence than
+// the scroll delivers reads as broken. Move a section and swap its `surface`
+// with the section it traded places with, or two greys end up adjacent.
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <AboutMeSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <WorkSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <Hero />
+      <Services />
+      <Work />
+      <About />
+      <TechStack />
+      <Experience />
+      <Testimonials />
+      <Faq />
+      <CtaBand />
     </>
   );
 }

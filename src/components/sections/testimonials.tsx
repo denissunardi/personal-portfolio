@@ -1,28 +1,38 @@
-import { TESTIMONIALS } from '@/lib/data';
-import Tag from '@/components/data-display/tag';
-import TestimonialDetails from '@/components/data-display/testimonial-details';
-import Typography from '@/components/general/typography';
-import Container from '@/components/layout/container';
+import { TestimonialCard } from "@/components/data-display/testimonial-card";
+import { BandHeader, headingId } from "@/components/primitives/band-header";
+import { Container } from "@/components/primitives/container";
+import { Section } from "@/components/primitives/section";
+import { TESTIMONIALS } from "@/content/testimonials";
+import * as tokens from "@/design/tokens";
+import { cn } from "@/lib/cn";
 
-const TestimonialsSection = () => {
+export function Testimonials() {
   return (
-    <Container id="testimonials" className="bg-gray-50">
-      <div className="flex flex-col items-center gap-4">
-        <div className="self-center">
-          <Tag label="Testimonials" />
-        </div>
-        <Typography variant="subtitle" className="max-w-xl text-center">
-          Nice things people have said about me:
-        </Typography>
-      </div>
-
-      <div className="flex gap-12 max-md:flex-col md:max-lg:flex-wrap">
-        {TESTIMONIALS?.map((testimonial, index) => (
-          <TestimonialDetails key={index} {...testimonial} />
-        ))}
-      </div>
-    </Container>
+    <Section
+      id="testimonials"
+      surface="canvas"
+      labelledBy={headingId("testimonials")}
+    >
+      <Container>
+        <BandHeader
+          id="testimonials"
+          eyebrow={TESTIMONIALS.header.eyebrow}
+          heading={TESTIMONIALS.header.heading}
+          subhead={TESTIMONIALS.header.subhead}
+        />
+        {/* role="list" restores the semantics Tailwind's list-style reset costs
+            Safari/VoiceOver; the eslint config allowlists exactly this. */}
+        <ul
+          role="list"
+          className={cn(tokens.layout["feature-grid-3"], "mt-12")}
+        >
+          {TESTIMONIALS.items.map((testimonial) => (
+            <li key={testimonial.id}>
+              <TestimonialCard testimonial={testimonial} />
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </Section>
   );
-};
-
-export default TestimonialsSection;
+}

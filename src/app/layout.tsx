@@ -1,93 +1,109 @@
-import Script from 'next/script';
-import { Inter } from 'next/font/google';
-import { Metadata } from 'next';
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata, Viewport } from "next";
 
-import './globals.css';
-import Header from '@/components/layout/header';
-import { Providers } from '@/lib/providers';
-import Footer from '@/components/layout/footer';
+import { SkipLink } from "@/components/primitives/skip-link";
+import { SiteFooter } from "@/components/sections/site-footer";
+import { SiteHeader } from "@/components/sections/site-header";
+import { SITE } from "@/content/site";
+import { buildFaqGraph, buildPersonGraph, jsonLdScript } from "@/lib/json-ld";
 
-const inter = Inter({ subsets: ['latin'] });
+import { fontDisplay, fontMono, fontSans } from "./fonts";
+import "./globals.css";
 
-const title = 'Sagar Shah | Full Stack Developer From Ahmedabad, India.';
-const description =
-  'A self-proclaimed designer who specializes in full stack development (React.js & Node.js), from Ahmedabad, India.';
-const url = 'https://sagarshah.dev';
+const gaId = process.env.GOOGLE_ANALYTICS_ID;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(url),
-  title,
-  description,
-  keywords: [
-    'Frontend Developer',
-    'Full Stack Developer',
-    'React Developer',
-    'Next.js Developer',
-  ],
-  creator: 'Sagar Shah',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  // Mandatory: alternates.canonical and openGraph.url below are relative, and a
+  // relative metadata URL without a metadataBase is a build error.
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: SITE.title,
+    template: SITE.titleTemplate,
+  },
+  description: SITE.description,
+  // Spread: SITE is `as const`, so keywords is readonly and Metadata wants a
+  // mutable array.
+  keywords: [...SITE.keywords],
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  alternates: { canonical: "/" },
+  // No images key here or in twitter: Phase 12's opengraph-image.tsx file
+  // convention emits both and overrides whatever the object declares.
   openGraph: {
-    type: 'website',
-    url,
-    title,
-    description,
-    siteName: title,
-    images: [
-      {
-        url: '/images/open-graph-sagar.png',
-      },
-    ],
+    type: "website",
+    url: "/",
+    // siteName is the brand, not the page title — otherwise a share card prints
+    // the title twice.
+    siteName: SITE.name,
+    title: SITE.ogTitle,
+    description: SITE.ogDescription,
+    locale: SITE.locale,
   },
   twitter: {
-    card: 'summary_large_image',
-    title,
-    description,
-    creator: '@shahsagarm',
-    images: '/images/open-graph-sagar.png',
+    card: "summary_large_image",
+    site: SITE.twitterHandle,
+    creator: SITE.twitterHandle,
+    title: SITE.twitterTitle,
+    description: SITE.twitterDescription,
   },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
-const googleAnalyticsId = process.env.GOOGLE_ANALYTICS_ID;
+// themeColor and colorScheme live here, not in metadata — deprecated there since
+// Next 14, where they are silently dropped rather than erroring.
+export const viewport: Viewport = {
+  themeColor: SITE.themeColor,
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
-      {googleAnalyticsId ? (
-        <head>
-          <Script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-          ></Script>
-          <Script id="google-anayltics-script">
-            {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', '${googleAnalyticsId}');
-          `}
-          </Script>
-        </head>
-      ) : null}
-      <body className={`${inter.className} bg-gray text-gray-600 antialiased`}>
-        <Providers>
-          <Header />
-          <main className="flex min-h-screen w-full flex-col">{children}</main>
-          <Footer />
-        </Providers>
+    <html
+      lang="en"
+      className={`${fontDisplay.variable} ${fontSans.variable} ${fontMono.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col bg-white font-sans text-gray-700">
+        <SkipLink />
+        <SiteHeader />
+        {/* tabIndex={-1}: without it the skip link moves the scroll position but
+            leaves focus on body, so the next Tab returns to the header. */}
+        <main id="main" tabIndex={-1} className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
+        {/* Native script, not next/script: JSON-LD is data, not executable code
+            (per the Next json-ld guide). Two separate graphs so a malformed FAQ
+            block cannot invalidate the Person block in one validator pass. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(buildPersonGraph()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(buildFaqGraph()) }}
+        />
+        <Analytics />
+        <SpeedInsights />
       </body>
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }

@@ -1,30 +1,47 @@
-import { PROJECTS } from '@/lib/data';
-import ProjectDetails from '@/components/data-display/project-details';
-import Tag from '@/components/data-display/tag';
-import Typography from '@/components/general/typography';
-import Container from '@/components/layout/container';
+import { ProjectCard } from "@/components/data-display/project-card";
+import { BandHeader, headingId } from "@/components/primitives/band-header";
+import { Container } from "@/components/primitives/container";
+import { Section } from "@/components/primitives/section";
+import { WORK } from "@/content/work";
+import * as tokens from "@/design/tokens";
+import { cn } from "@/lib/cn";
 
-const WorkSection = () => {
+const FLAGSHIP_SIZES = "(min-width: 1280px) 1232px, 100vw";
+const TWO_UP_SIZES = "(min-width: 768px) 50vw, 100vw";
+
+export function Work() {
+  const flagship = WORK.projects.find((project) => project.featured);
+  // The flagship is chosen by data, not array position — a missing featured
+  // flag must fail the build loudly, not quietly promote the first project.
+  if (!flagship) {
+    throw new Error("work: WORK.projects has no entry with featured: true");
+  }
+  const rest = WORK.projects.filter((project) => project !== flagship);
+
   return (
-    <Container id="work">
-      <div className="flex flex-col items-center gap-4">
-        <div className="self-center">
-          <Tag label="Work" />
-        </div>
-        <Typography variant="subtitle" className="max-w-xl text-center">
-          Some of the noteworthy projects I have built:
-        </Typography>
-      </div>
-
-      {PROJECTS?.map((project, index) => (
-        <ProjectDetails
-          key={index}
-          {...project}
-          layoutType={index % 2 === 0 ? 'default' : 'reverse'}
+    <Section id="work" surface="canvas" labelledBy={headingId("work")}>
+      <Container>
+        <BandHeader
+          id="work"
+          eyebrow={WORK.header.eyebrow}
+          heading={WORK.header.heading}
+          subhead={WORK.header.subhead}
         />
-      ))}
-    </Container>
-  );
-};
 
-export default WorkSection;
+        <ul
+          role="list"
+          className={cn(tokens.layout["feature-grid-2"], "mt-16")}
+        >
+          <li className="md:col-span-2">
+            <ProjectCard project={flagship} sizes={FLAGSHIP_SIZES} />
+          </li>
+          {rest.map((project) => (
+            <li key={project.id}>
+              <ProjectCard project={project} sizes={TWO_UP_SIZES} />
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </Section>
+  );
+}
