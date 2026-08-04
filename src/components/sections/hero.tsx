@@ -107,7 +107,7 @@ export function Hero() {
                   {HERO.location}
                 </Text>
               </p>
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 ml-1">
                 <span className="relative flex size-2 shrink-0">
                   {SITE.availability.available ? (
                     <span
