@@ -1,160 +1,77 @@
-import fiskilShot from "@/assets/images/work/fiskil.png";
-import lanternShot from "@/assets/images/work/lantern.png";
-import mokobokoShot from "@/assets/images/work/mokoboko.png";
-import pepehousingShot from "@/assets/images/work/pepehousing.png";
-import wingieShot from "@/assets/images/work/wingie.png";
-
 import type { WorkContent } from "./types";
 
-// Screenshot alt text never repeats the project name — the card's heading sits
-// right below the image, and a screen reader would say the name twice.
+import orderbookLogo from "@/assets/images/project/orderbook.png";
+import ordersLogo from "@/assets/images/project/orders.png";
+import summaryLogo from "@/assets/images/project/summary.png";
+
+// Screenshots for NDA/internal projects. Futures platform has 4 images with
+// first image displayed in card, remaining images accessible via click-to-open
+// gallery carousel with left/right arrows. See types.ts for Project shape —
+// all image fields can be omitted if no screenshots available.
+const FUTURE_SCREENSHOTS: Readonly<readonly StaticImageData[]> = [
+  orderbookLogo,
+  ordersLogo,
+  summaryLogo,
+];
+
 export const WORK = {
   header: {
     id: "work",
     eyebrow: "Work",
-    heading: "Products I helped build.",
-    subhead:
-      "All five are live, in production, with real users. Click through and poke around.",
+    heading: "Systems I've built and shipped.",
   },
-  // MokoBoko is first and featured: true, so the band renders it full-width
-  // without sorting. The rest are newest first.
+  // The commodity futures platform is featured: true, so the band renders it
+  // full-width. The rest follow newest-first.
   projects: [
     {
-      id: "mokoboko",
-      name: "MokoBoko",
-      domain: "mokoboko.xyz",
-      href: "https://mokoboko.xyz",
+      id: "futures-trading",
+      name: "Futures Trading System",
       featured: true,
       description:
-        "Class booking platform for a boutique fitness studio in Lisbon. Browse the live schedule, book classes, buy packs or subscriptions, and pay online.",
-      role: "Full stack — the whole platform: booking app, admin console, a shared component library, and an Express API with Stripe payments and automated emails.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Radix UI",
-        "React Query",
-        "Express",
-        "Sequelize",
-        "PostgreSQL",
-        "Supabase",
-        "Stripe",
-      ],
+        "A high-performance commodity futures trading platform where prices move by the second and latency can't be tolerated. I architected the backend services and WebSocket integrations that stream live market data directly to traders' screens, ensuring every price tick arrives in real time. The system supports complex order management with multiple order types, position tracking, and risk controls. I also helped prepare the platform for regulatory scrutiny by documenting system architecture and walking auditors through data flows, demonstrating how the platform maintains accuracy under pressure.",
+      role: "Backend / Fullstack — designed and implemented Golang microservices using Gin framework, built WebSocket-based real-time data feeds with PostgreSQL persistence, integrated payment gateway for funding operations, created advanced filtering dashboards for transaction reporting, and coordinated stakeholder alignment on operational and compliance requirements.",
+      stack: ["Golang", "Gin", "WebSocket", "PostgreSQL", "Payment Gateway"],
       screenshot: {
-        src: mokobokoShot,
-        alt: "Class booking page with a week-strip date picker and timed class cards showing instructor, price and a Book class button.",
+        src: FUTURE_SCREENSHOTS[0],
+        alt: "Futures Trading System — Main Dashboard",
       },
-      linkLabel: "Visit mokoboko.xyz",
+      screenshots: FUTURE_SCREENSHOTS.slice(1),
     },
     {
-      id: "fiskil",
-      name: "Fiskil",
-      domain: "fiskil.com",
-      href: "https://www.fiskil.com",
+      id: "crypto-compliance",
+      name: "Crypto Trading — Audit & Systems",
       featured: false,
       description:
-        "Consumer data sharing infrastructure for banks and energy providers. One API platform for secure, consumer-permissioned data access at scale.",
-      role: "Full stack — the customer console and auth flows, the Go services on Google Cloud behind them, and a docs platform with an AI assistant and MCP server.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Radix UI",
-        "React Query",
-        "Vite",
-        "Go",
-        "PostgreSQL",
-        "Firebase",
-        "Google Cloud",
-        "MCP",
-        "Jest",
-        "Cypress",
-      ],
-      screenshot: {
-        src: fiskilShot,
-        alt: "Marketing hero headlined 'Enable Secure, Scalable Consumer Data Sharing' above a strip of partner logos.",
-      },
-      linkLabel: "Visit fiskil.com",
+        "A cryptocurrency trading client heading into an OJK audit. I walked auditors through the IT system flows and application processes in plain language, translating how the platform works into something a regulator could sign off on — and integrated a secure payment method for users along the way.",
+      role: "Fullstack — explained IT system flows and application processes for audit readiness, integrated a secure and efficient payment gateway, and aligned the implementation with business requirements.",
+      stack: ["Golang", "PHP", "Payment Gateway", "PostgreSQL"],
     },
     {
-      id: "lantern",
-      name: "Lantern",
-      domain: "withlantern.com",
-      href: "https://withlantern.com",
+      id: "pos-merchant",
+      name: "Merchant POS & Inventory System",
       featured: false,
       description:
-        "An AI marketing platform. It builds a model of your target customers, then specialized agents research, personalize, and launch campaigns across channels.",
-      role: "Full stack — product UI and the services behind it, from the React Flow workflow builder to Express and Fastify APIs and the Temporal jobs powering the AI agents.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "React Flow",
-        "Express",
-        "Fastify",
-        "Temporal",
-        "Vercel AI SDK",
-        "OpenAI",
-        "PostgreSQL",
-        "Supabase",
-        "Redis",
-      ],
-      screenshot: {
-        src: lanternShot,
-        alt: "Dark starfield hero reading 'Agentic Based Marketing' above a product panel pairing an AI chat with a company research table.",
-      },
-      linkLabel: "Visit withlantern.com",
+        "The systems merchant owners run their shops on. I built and optimized an inventory management system that gave owners real control over their stock, integrated payment systems through third-party APIs, and redesigned the dashboards with advanced filtering so people could slice their data exactly how they needed it.",
+      role: "Fullstack — inventory management, third-party payment API integration, transaction-report performance tuning, and an internal finance dashboard rebuilt for everyday operational use.",
+      stack: ["Laravel", "CodeIgniter", "PHP", "MySQL", "jQuery"],
     },
     {
-      id: "wingie",
-      name: "Wingie",
-      domain: "wingie.com",
-      href: "https://www.wingie.com",
+      id: "education-platform",
+      name: "Educational Platform",
       featured: false,
       description:
-        "A flight comparison and booking marketplace. Search fares across airlines, compare what's actually worth flying, and check out in a few clicks.",
-      role: "Full stack — a React and TypeScript interface on an Express and PostgreSQL API, with Redux holding the search and booking state together.",
-      stack: [
-        "React",
-        "TypeScript",
-        "Redux",
-        "Styled Components",
-        "React Bootstrap",
-        "Express",
-        "PostgreSQL",
-        "Firebase",
-      ],
-      screenshot: {
-        src: wingieShot,
-        alt: "Flight search homepage with a 'Find Cheap Flights' form over a beach photo, above a grid of popular route cards with fares.",
-      },
-      linkLabel: "Visit wingie.com",
+        "A learning platform used on both web and mobile. I connected the front end to the backend, shipped new features that made the product easier to use, added SMS verification to keep accounts secure, and built the Laravel APIs that powered both the mobile app and the website.",
+      role: "Backend — new feature development, SMS verification, front-end/back-end integration, and Laravel APIs serving both mobile and web clients.",
+      stack: ["Laravel", "PHP", "MySQL", "REST API"],
     },
     {
-      id: "pepehousing",
-      name: "Pepehousing",
-      domain: "pepehousing.com",
-      href: "https://pepehousing.com",
+      id: "cms-campaign",
+      name: "CMS & Campaign Websites",
       featured: false,
       description:
-        "Rent a flat or a room in Poland. Browse verified listings, message the landlord directly, and pay online — securely, start to finish.",
-      role: "Front end — a Next.js application with a typed data layer on Redux Toolkit, and every component documented in Storybook.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Redux Toolkit",
-        "Storybook",
-      ],
-      screenshot: {
-        src: pepehousingShot,
-        alt: "Rental homepage hero headlined 'Accommodation for students and expats', with a search-by-city bar and stat cards for tenants and properties.",
-      },
-      linkLabel: "Visit pepehousing.com",
+        "A content management system built from scratch with full create-read-update-delete control, plus the company-profile and campaign sites that ran on top of it — the kind of tooling a marketing team can use without calling a developer every time they want to change a page.",
+      role: "Backend — designed and built a custom CMS with full CRUD, integrated front-end work into the backend, and delivered company-profile and campaign websites for branding and promotion.",
+      stack: ["PHP", "Laravel", "MySQL", "HTML", "CSS"],
     },
   ],
-} as const satisfies WorkContent;
+} satisfies WorkContent;

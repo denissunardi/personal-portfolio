@@ -5,7 +5,6 @@ import { Faq } from "@/components/sections/faq";
 import { Hero } from "@/components/sections/hero";
 import { Services } from "@/components/sections/services";
 import { TechStack } from "@/components/sections/tech-stack";
-import { Testimonials } from "@/components/sections/testimonials";
 import { Work } from "@/components/sections/work";
 
 // No wrapper: <main> in the layout is the only one, and each Section paints its
@@ -22,8 +21,6 @@ export default function Home() {
       <About />
       <TechStack />
       <Experience />
-      <Testimonials />
-      <Faq />
       <CtaBand />
     </>
   );

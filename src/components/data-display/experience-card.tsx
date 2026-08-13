@@ -30,15 +30,17 @@ export function ExperienceCard({ role }: ExperienceCardProps) {
     >
       {/* w-32 is exactly the logo token's own box. A quarter-width column
           would be 212px on a large screen — 84px wasted that the bullet text
-          needs. */}
-      <div className="md:w-32 md:shrink-0">
-        <Image
-          src={role.logo}
-          alt=""
-          sizes="128px"
-          className={tokens.overrides["company-logo"]}
-        />
-      </div>
+          needs. Skipped entirely when a role has no logo asset yet. */}
+      {role.logo ? (
+        <div className="md:w-32 md:shrink-0">
+          <Image
+            src={role.logo}
+            alt=""
+            sizes="128px"
+            className={tokens.overrides["company-logo"]}
+          />
+        </div>
+      ) : null}
 
       {/* flex-1, not a fraction: both side columns have fixed widths, so the
           text column takes whatever is left. */}

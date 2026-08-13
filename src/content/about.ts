@@ -1,47 +1,38 @@
-import familyPhoto from "@/assets/images/sagar-family.jpg";
-
 import type { AboutContent } from "./types";
 
 export const ABOUT = {
   header: {
     id: "about",
     eyebrow: "About",
-    heading: "A decade of building for the web. Still not bored.",
+    heading: "A decade of building for the web. Still shipping.",
   },
-  photo: {
-    src: familyPhoto,
-    alt: "Sagar Shah, on the right, standing outdoors in the evening with his family in front of a floodlit stone wall, wearing a brown-striped shirt and white trousers.",
-  },
+  // No photo yet: About renders text-only and the prose takes the full width.
+  // Drop a headshot into the content and add a `photo` field to bring the
+  // two-column layout back.
+  photo: undefined,
   paragraphs: [
     [
-      "I'm a full stack AI engineer who takes the whole product — the architecture underneath and the pixels on top. I don't hand the interface to someone else and hope it comes back right. User experience, accessible markup, and code the next person can actually read all matter to me equally.",
+      "I'm a backend-focused fullstack developer. I like the part of a product most people never see Ã¢â‚¬â€ the APIs, the data models, the payment flows, the real-time services Ã¢â‚¬â€ the plumbing that has to be right or nothing above it works. I've spent the last decade making sure it works.",
     ],
     [
-      "I shipped my first production code in December 2015 and haven't stopped since. A decade later the tools have changed — these days it's Next.js, TypeScript, NestJS and Tailwind CSS — but the part I like most hasn't: watching something go from a rough sketch to a URL that real people use.",
+      "I shipped my first production code in 2015 and haven't stopped since. The through-line has been business systems that carry real weight: trading platforms where prices move by the second, payment integrations that have to reconcile to the cent, POS and inventory systems merchants run their shops on, and CMS platforms teams use every day.",
     ],
     [
-      "I've worked both sides of the table. Over four years leading teams at an agency — architecture, sprint planning, enterprise clients — and since 2021, independent, working directly with founders and product teams who need one person who can hold the whole picture.",
+      "My toolkit is PHP with Laravel and CodeIgniter, and Golang with Gin when a service needs to be fast. MySQL and PostgreSQL for data, WebSocket for the live bits, and HTML, CSS and jQuery when I'm working up front. I'm just as comfortable explaining a system to an OJK auditor as I am writing it.",
     ],
     [
-      "I like owning a product end to end: ideation, design, build, ship. Small teams suit me best — fewer handoffs, faster decisions, and no ambiguity about who is responsible for the thing working.",
-    ],
-    [
-      "When I'm not in developer mode, you'll find me on ",
-      { text: "X", href: "https://x.com/shahsagarm" },
-      " or Indie Hackers, watching early-stage founders build in public. I do a bit of that myself — I post what I'm learning and what I'm breaking, and most of it ends up on ",
-      { text: "GitHub", href: "https://github.com/shahsagarm" },
-      ".",
+      "I care about applications that stay fast and stay maintainable Ã¢â‚¬â€ optimizing the slow reporting page, tidying the dashboard so it's actually usable, integrating the third-party API so the edge cases don't bite later. Small teams suit me: fewer handoffs, faster decisions, and no confusion about who owns the thing working.",
     ],
   ],
   quickBitsLead: "A few quick bits:",
   quickBits: [
-    "B.E. in Computer Engineering",
-    "Full-time freelancer since 2021",
-    "Based in Ahmedabad, India (IST)",
-    "Avid learner",
-    "Aspiring indie hacker",
-    "Ships UI without waiting on a designer",
+    "B.Sc. Computer Science, BINUS University",
+    "Backend / Fullstack Developer",
+    "Based in Jakarta, Indonesia (WIB)",
+    "Laravel Ã‚· CodeIgniter Ã‚· Golang",
+    "Bahasa Indonesia & English",
+    "Open to roles and freelance projects",
   ],
   closing:
-    "One last thing: I'm taking on freelance work right now. Say hello — I don't bite.",
-} as const satisfies AboutContent;
+    "One last thing: I'm open to new roles and freelance projects right now. Say hello Ã¢â‚¬â€ I'd be glad to hear what you're building.",
+} satisfies AboutContent;

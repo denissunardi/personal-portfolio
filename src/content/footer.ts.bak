@@ -41,7 +41,7 @@ export const FOOTER = {
       links: [
         {
           label: "Download CV",
-          href: "/files/denis-full-stack-cv.pdf",
+          href: "/files/denis-sunardi-fullstack-developer.pdf",
         },
         { label: "llms.txt", href: "/llms.txt" },
       ],
@@ -54,6 +54,6 @@ export const FOOTER = {
     // Renders as "© {year} Denis Sunardi Samsico · Designed and coded in
     // Jakarta, Indonesia." The year comes from src/lib/now.ts, never stored
     // here.
-    segments: ["Designed and coded in Jakarta, Indonesia."],
+    segments: ["Designed and coded in Jakarta, Indonesia."] satisfies import("./types").RichParagraph,
   },
 } satisfies FooterContent;

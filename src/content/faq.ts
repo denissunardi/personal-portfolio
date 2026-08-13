@@ -6,54 +6,53 @@ export const FAQ = {
   header: {
     id: "faq",
     eyebrow: "FAQ",
-    heading: "Questions people ask before hiring me.",
-    subhead: "Short answers. Anything else, email me.",
+    heading: "Questions people ask before working with me.",
   },
   // Every <details> shares this name, so the browser closes one answer when
   // another opens — an accordion with zero JavaScript.
   groupName: "faq",
   items: [
     {
-      id: "how-we-work",
-      question: "How do we work together?",
-      answer:
-        "A short call to pin down the real problem, then a written plan with milestones before I write any code. After that you get working software every week — not a status update.",
-    },
-    {
       id: "engagement-types",
-      question: "What kind of work do you take on?",
+      question: "Are you open to full-time roles or freelance?",
       answer:
-        "Three kinds: a fixed project with a clear scope, a monthly retainer, or joining your team as an extra pair of hands. I'll build the whole thing or just the front end — your call.",
-    },
-    {
-      id: "ai",
-      question: "Can you build AI features?",
-      answer:
-        "Yes — chat that streams, agents that use your tools, answers pulled from your own data. Built on the Claude and OpenAI APIs, with spend limits and tests in place before launch, not after the first bill.",
-    },
-    {
-      id: "design",
-      question: "I don't have a designer. Is that a problem?",
-      answer:
-        "No. Send a Figma file and it comes back as pixel-perfect code. No Figma? I'll put a clickable wireframe in front of you within a day, then build the real thing from your existing components.",
+        "Both. I'm open to joining a team full-time and to freelance or contract projects — a fixed scope, a monthly arrangement, or an extra pair of hands on your backend. Tell me what you need and we'll find the right shape.",
     },
     {
       id: "stack",
       question: "What do you build with?",
       answer:
-        "React, Next.js and TypeScript on the front. Node with Express or NestJS and PostgreSQL behind it. If your stack is something else, tell me — I'd rather say it's not a fit than learn on your budget.",
+        "PHP with Laravel and CodeIgniter, and Golang with Gin when a service needs to be fast. MySQL and PostgreSQL for data, WebSocket for real-time features, and HTML, CSS and jQuery on the front end. If your stack is close to that, I'll be productive quickly.",
+    },
+    {
+      id: "backend",
+      question: "What kind of work is your sweet spot?",
+      answer:
+        "Backend and integrations. APIs, business logic, payment gateways, third-party API connections, real-time WebSocket services, and the dashboards and reporting behind a product. I've done this across trading platforms, POS and inventory, finance dashboards and CMS.",
+    },
+    {
+      id: "payments",
+      question: "Can you handle payments and integrations?",
+      answer:
+        "Yes. I've integrated payment gateways and third-party payment APIs for trading and merchant platforms, plus SMS verification and onboarding flows. I build them to reconcile and to handle the edge cases, not just the happy path.",
+    },
+    {
+      id: "frontend",
+      question: "Do you only do backend, or fullstack?",
+      answer:
+        "Fullstack, with the backend as my strength. I can take a feature from the database to the screen with HTML, CSS and jQuery, and I've optimized front-end pages for speed and usability. If you need heavy modern-frontend work, I'll tell you honestly where my line is.",
     },
     {
       id: "timezone",
       question: "Where are you based, and will our hours overlap?",
       answer:
-        "Ahmedabad, India — IST (UTC+5:30). That's a full working day with Europe, mornings with Australia, and the start of the day with the US East Coast. Slack and email day to day, calls when a call is faster.",
+        "Jakarta, Indonesia — WIB (UTC+7). That's a full working day with the rest of Asia and Australia, and mornings that reach into Europe. Email and chat day to day, calls when a call is faster.",
     },
     {
       id: "getting-started",
-      question: "Are you free, and how do we start?",
+      question: "Are you available, and how do we start?",
       answer:
-        "Yes, I'm taking on new work right now. Email reachsagarshah@gmail.com with what you're building and when you need it — if it's a fit, you get a plan and a timeline back; if it isn't, I'll say so.",
+        "Yes — I'm open to new roles and freelance work right now. Email Deniaz.94@gmail.com with what you're building and when you need it; if it's a fit, I'll come back with next steps, and if it isn't, I'll say so.",
     },
   ],
-} as const satisfies FaqContent;
+} satisfies FaqContent;

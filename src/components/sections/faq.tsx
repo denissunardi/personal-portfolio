@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 
 export function Faq() {
   return (
-    <Section id="faq" surface="soft" labelledBy={headingId("faq")}>
+    <Section id="faq" surface="canvas" labelledBy={headingId("faq")}>
       <Container>
         <BandHeader
           id="faq"

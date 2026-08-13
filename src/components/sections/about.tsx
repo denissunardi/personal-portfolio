@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { BandHeader, headingId } from "@/components/primitives/band-header";
 import { Container } from "@/components/primitives/container";
 import { Link } from "@/components/primitives/link";
@@ -46,28 +44,8 @@ export function About() {
         />
 
         <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-5">
-            {/* No fill prop: fill throws away the image's own width/height,
-                leaving only the CSS aspect box to reserve space. With a plain
-                static import both reserve it, so the layout cannot shift even
-                if one breaks. */}
-            <div
-              className={cn(
-                tokens.overrides["photo-frame"],
-                "aspect-4/5 w-full",
-              )}
-            >
-              <Image
-                src={ABOUT.photo.src}
-                alt={ABOUT.photo.alt}
-                sizes="(min-width: 768px) 45vw, 100vw"
-                placeholder="blur"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-6 md:col-span-7">
+          {/* No photo yet: prose takes full width */}
+          <div className="md:col-span-12 flex flex-col gap-6">
             {ABOUT.paragraphs.map((segments) => (
               <RichParagraph key={paragraphKey(segments)} segments={segments} />
             ))}

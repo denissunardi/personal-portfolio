@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Link as ExternalLink, Mail, Phone } from "lucide-react";
 
 import { CopyButton } from "@/components/islands/copy-button";
 import { headingId } from "@/components/primitives/band-header";
@@ -13,16 +13,16 @@ import { CTA } from "@/content/cta";
 import * as tokens from "@/design/tokens";
 import { cn } from "@/lib/cn";
 
-const ROW_ICONS = { email: Mail, phone: Phone } as const;
+const ROW_ICONS = { email: Mail, phone: Phone, linkedin: ExternalLink } as const;
 
 // Section id is `contact`, not `cta`: the hero, nav and footer all link to
 // #contact. mailto:/tel: render as raw <a> elements, never Link, which would
 // falsely announce "(opens in a new tab)" for a mail or dialer handoff.
 export function CtaBand() {
   return (
-    <Section id="contact" surface="canvas" labelledBy={headingId("contact")}>
+    <Section id="contact" surface="soft" labelledBy={headingId("contact")}>
       <Container>
-        <Card surface="muted" className="p-12">
+        <Card surface="none" className="bg-white p-12 shadow-sm rounded-xl">
           <div className="flex flex-col items-center text-center">
             <Badge>{CTA.eyebrow}</Badge>
 

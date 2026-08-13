@@ -8,27 +8,25 @@ export const CAPABILITIES = {
     id: "services",
     eyebrow: "Services",
     heading: "What you can hand me.",
-    subhead:
-      "AI features, the product around them, or just the half you are missing. All three work.",
   },
   items: [
     {
-      id: "ai",
-      icon: "bot",
-      title: "AI features that survive users",
-      body: "Chat that streams, agents that call your tools, retrieval that answers from your data instead of guessing, and long jobs that keep running after the tab closes. Built on the Claude and OpenAI APIs, with evaluations and spend limits in place before launch, not after the first bill.",
-    },
-    {
-      id: "product",
+      id: "backend",
       icon: "layers",
-      title: "The whole product, front to back",
-      body: "Typed React and Next.js on top; Node with Express or NestJS and PostgreSQL underneath, plus vector search when your data has to be found by meaning rather than by keyword. Fast on a mid-range phone, usable from the keyboard, accessible by default rather than by audit. One person owns both ends, so nothing falls through the gap between them.",
+      title: "Backend and APIs that hold up",
+      body: "REST APIs, business logic, and the services underneath a real product — built with Laravel, CodeIgniter or Golang on MySQL and PostgreSQL. Clean data models, sensible endpoints, and code the next developer can actually read. Includes the real-time bits: WebSocket feeds for live dashboards and trading screens that have to stay in sync.",
     },
     {
-      id: "design",
+      id: "integrations",
+      icon: "bot",
+      title: "Payments and integrations that just work",
+      body: "Payment gateways wired in end to end, third-party APIs connected without the flaky edge cases, and transaction flows that reconcile. I've integrated payment methods for trading and merchant platforms, plus SMS verification, onboarding and finance dashboards — the plumbing users never see but always feel when it breaks.",
+    },
+    {
+      id: "fullstack",
       icon: "pen-tool",
-      title: "Design to code, designer optional",
-      body: "Send a Figma file and it comes back as pixel-perfect, responsive, accessible code. No Figma file and no designer? I use AI to put a clickable wireframe in front of you within a day, then build the real interface from your existing components. Nothing waits on a hire.",
+      title: "The whole build, front to back",
+      body: "Need one person to own it end to end? I take a feature from database to the screen — HTML, CSS and jQuery on top, PHP or Golang underneath — and optimize the slow pages so they load fast and the dashboards stay usable. Fewer handoffs, one person accountable for the thing actually working.",
     },
   ],
-} as const satisfies CapabilitiesContent;
+} satisfies CapabilitiesContent;

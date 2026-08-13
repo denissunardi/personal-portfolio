@@ -4,7 +4,6 @@ import { EXPERIENCE } from "@/content/experience";
 import { FAQ } from "@/content/faq";
 import { SITE } from "@/content/site";
 import { TECH } from "@/content/tech";
-import { TESTIMONIALS } from "@/content/testimonials";
 import { WORK } from "@/content/work";
 import { formatRange } from "@/lib/duration";
 import { NOW } from "@/lib/now";
@@ -48,7 +47,7 @@ export function buildLlmsTxt(): string {
   lines.push("", "## Selected work", "", `${WORK.header.subhead}`, "");
   for (const project of WORK.projects) {
     lines.push(
-      `- **${project.name}** (${project.href}): ${project.description} Role: ${project.role} Stack: ${project.stack.join(", ")}.`,
+      `- **${project.name}**: ${project.description} Role: ${project.role} Stack: ${project.stack.join(", ")}.`,
     );
   }
 
@@ -76,11 +75,6 @@ export function buildLlmsTxt(): string {
     lines.push(flattenRich(paragraph), "");
   }
   lines.push(`${ABOUT.quickBitsLead} ${ABOUT.quickBits.join("; ")}.`);
-
-  lines.push("", "## Testimonials", "");
-  for (const item of TESTIMONIALS.items) {
-    lines.push(`- "${item.quote}" — ${item.name}, ${item.title}`);
-  }
 
   lines.push("", "## FAQ");
   for (const item of FAQ.items) {

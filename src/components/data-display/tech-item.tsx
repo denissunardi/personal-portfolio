@@ -15,6 +15,18 @@ type TechItemProps = {
 };
 
 export function TechItem({ item }: TechItemProps) {
+  // No logo asset yet: render the name on its own. The slot and its optical
+  // sizing only make sense once a real image is present, so skip both.
+  if (!item.logo) {
+    return (
+      <li className="flex items-center gap-2.5">
+        <Text as="span" variant="body-sm" tone="ink">
+          {item.name}
+        </Text>
+      </li>
+    );
+  }
+
   const { width, height } = item.logo;
   // A future SVG with a viewBox but no width/height would make this NaN and
   // silently take the narrow branch — treat it as square instead.
