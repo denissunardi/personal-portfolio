@@ -41,36 +41,41 @@ const ModalCarousel = ({ images, onClose }: { readonly images: StaticImageData[]
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
-      onClick={(e) => e.stopPropagation()}
+      className={cn("fixed inset-0 z-50 flex items-center justify-center p-4", tokens.overrides["gallery-overlay"])}
     >
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute inset-0 h-full w-full cursor-default"
+        aria-label="Close gallery"
+      />
       {images.length > 1 && (
         <>
           <button 
             onClick={prevImage} 
-            className="absolute left-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white" 
+            className={cn("absolute left-4 z-20 flex h-12 w-12 items-center justify-center backdrop-blur-sm", tokens.overrides["gallery-nav-button"])} 
             aria-label="Previous image"
           >←</button>
-          <span className="absolute top-6 right-6 rounded-full bg-black/70 px-3 py-1 text-sm font-medium text-white">
+          <span className={cn("absolute top-6 right-6 px-3 py-1", tokens.overrides["gallery-counter"])}>
             {currentIndex + 1} / {images.length}
           </span>
           <button 
             onClick={nextImage} 
-            className="absolute right-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white" 
+            className={cn("absolute right-4 z-20 flex h-12 w-12 items-center justify-center backdrop-blur-sm", tokens.overrides["gallery-nav-button"])} 
             aria-label="Next image"
           >→</button>
         </>
       )}
       <button 
         onClick={onClose} 
-        className="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70" 
+        className={cn("absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center", tokens.overrides["gallery-close-button"])} 
         aria-label="Close gallery"
       >✕</button>
       <div className="flex h-full w-full items-center justify-center p-4">
         <Image 
           src={images[currentIndex]} 
           alt={`Project screenshot ${currentIndex + 1}`} 
-          className="max-h-full max-w-full object-contain rounded shadow-2xl" 
+          className={cn("max-h-full max-w-full object-contain", tokens.overrides["gallery-image"])} 
           style={{ maxHeight: '80vh' }} 
         />
       </div>
@@ -84,20 +89,12 @@ export function ProjectCard({ project, sizes, className }: ProjectCardProps) {
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
-    console.log("ProjectCard handleClick called");
-    console.log("hasScreenshot:", hasScreenshot);
-    console.log("hasGallery:", hasGallery);
-    
     if (hasGallery || hasScreenshot) {
-      console.log("Opening modal...");
       setShowModal(true);
-    } else {
-      console.log("Neither screenshot nor gallery exists!");
     }
   };
 
   const handleCloseModal = () => {
-    console.log("Closing modal...");
     setShowModal(false);
   };
 
@@ -111,6 +108,10 @@ export function ProjectCard({ project, sizes, className }: ProjectCardProps) {
             <div 
               className="relative cursor-pointer overflow-hidden" 
               onClick={handleClick}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleClick(); }}
+              role="button"
+              tabIndex={0}
+              aria-label="Open image gallery"
             >
               <Image
                 src={project.screenshot!.src}
@@ -120,7 +121,7 @@ export function ProjectCard({ project, sizes, className }: ProjectCardProps) {
                 className="w-full h-auto object-contain transition-transform duration-300 hover:scale-105"
               />
               {hasGallery ? (
-                <div className="absolute bottom-3 right-3 rounded-full bg-black/80 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm z-10 pointer-events-none">
+                <div className={cn("absolute bottom-3 right-3 px-3 py-1.5 z-10 pointer-events-none", tokens.overrides["gallery-image-badge"])}>
                   🖼️ Click to view gallery ({allImages.length})
                 </div>
               ) : null}

@@ -44,7 +44,13 @@ export function Hero() {
             )}
           >
             <div className="flex items-center gap-3">
-              <Avatar source={HERO.portrait} loading="eager" sizes="36px" />
+              {HERO.portrait ? (
+                <Avatar
+                  source={{ kind: "photo", src: HERO.portrait.src, alt: HERO.portrait.alt }}
+                  loading="eager"
+                  sizes="36px"
+                />
+              ) : null}
               <Badge>{HERO.eyebrow}</Badge>
             </div>
 

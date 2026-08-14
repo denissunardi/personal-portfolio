@@ -16,7 +16,6 @@ export function Services() {
           id={CAPABILITIES.header.id}
           eyebrow={CAPABILITIES.header.eyebrow}
           heading={CAPABILITIES.header.heading}
-          subhead={CAPABILITIES.header.subhead}
         />
 
         {/* role="list" survives Tailwind's preflight: Safari/VoiceOver drop list

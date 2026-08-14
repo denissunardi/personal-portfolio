@@ -220,6 +220,24 @@ export const overrides = {
   "terminal-line-status": "text-emerald-400",
   "terminal-glyph": "text-emerald-400",
   "terminal-cursor": "select-none text-white",
+  // CTA band: a white card lifted off the soft band surface with a subtle
+  // shadow and a larger radius than the default control-radius.
+  "cta-card": "bg-white shadow-sm rounded-xl",
+  // Project gallery modal: near-black overlay backdrop and the buttons that
+  // float on it. bg-black/95 gives 95% opacity; the button variants use
+  // black at 50%/70% for default/hover.
+  "gallery-overlay": "bg-black/95",
+  "gallery-image": "rounded shadow-2xl",
+  "gallery-close-button":
+    "bg-black/50 text-white hover:bg-black/70",
+  "gallery-nav-button":
+    "rounded-full bg-black/50 text-white hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white",
+  "gallery-counter":
+    "rounded-full bg-black/70 text-sm font-medium text-white",
+  "gallery-badge":
+    "bg-black/50 text-white backdrop-blur-sm",
+  "gallery-image-badge":
+    "rounded-full bg-black/80 text-xs font-medium text-white backdrop-blur-sm",
 } as const;
 
 /** Only the six responsive collapses DESIGN.md itself names. Every other grid,

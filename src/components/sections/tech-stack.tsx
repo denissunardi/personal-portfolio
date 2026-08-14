@@ -22,7 +22,6 @@ export function TechStack() {
           id="stack"
           eyebrow={TECH.header.eyebrow}
           heading={TECH.header.heading}
-          subhead={TECH.header.subhead}
         />
 
         <ul

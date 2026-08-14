@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 import type { WorkContent } from "./types";
 
 import orderbookLogo from "@/assets/images/project/orderbook.png";

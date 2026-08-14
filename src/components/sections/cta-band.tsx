@@ -17,9 +17,9 @@ const ROW_ICONS = { email: Mail, phone: Phone, linkedin: ExternalLink } as const
 
 export function CtaBand() {
   return (
-    <Section id="contact" surface="soft" labelledBy={headingId("contact")} className="bg-white-50 !p-0">
+    <Section id="contact" surface="soft" labelledBy={headingId("contact")} className="!p-0">
       <Container className="py-24">
-        <Card surface="none" className="bg-white p-12 shadow-sm rounded-xl mx-4">
+        <Card surface="none" className={cn(tokens.overrides["cta-card"], "p-12 mx-4")}>
           <div className="flex flex-col items-center text-center">
             <Badge>{CTA.eyebrow}</Badge>
 

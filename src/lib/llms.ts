@@ -1,25 +1,12 @@
-import { ABOUT } from "@/content/about";
 import { CAPABILITIES } from "@/content/capabilities";
 import { EXPERIENCE } from "@/content/experience";
-import { FAQ } from "@/content/faq";
 import { SITE } from "@/content/site";
 import { TECH } from "@/content/tech";
 import { WORK } from "@/content/work";
 import { formatRange } from "@/lib/duration";
 import { NOW } from "@/lib/now";
 
-import type { RichParagraph } from "@/content/types";
-
 const absolute = (path: string): string => new URL(path, SITE.url).toString();
-
-const flattenRich = (paragraph: RichParagraph): string =>
-  paragraph
-    .map((segment) =>
-      typeof segment === "string"
-        ? segment
-        : `[${segment.text}](${segment.href})`,
-    )
-    .join("");
 
 // Everything here derives from src/content/* — same single-source rule as
 // json-ld.ts and sitemap.ts — so a content edit updates /llms.txt on the next
@@ -44,7 +31,7 @@ export function buildLlmsTxt(): string {
     lines.push(`- **${item.title}** — ${item.body}`);
   }
 
-  lines.push("", "## Selected work", "", `${WORK.header.subhead}`, "");
+  lines.push("", "## Selected work", "", `${WORK.header.heading}`, "");
   for (const project of WORK.projects) {
     lines.push(
       `- **${project.name}**: ${project.description} Role: ${project.role} Stack: ${project.stack.join(", ")}.`,
@@ -68,17 +55,6 @@ export function buildLlmsTxt(): string {
     lines.push(
       `- **${group.title}**: ${group.items.map((item) => item.name).join(", ")}`,
     );
-  }
-
-  lines.push("", "## About", "");
-  for (const paragraph of ABOUT.paragraphs) {
-    lines.push(flattenRich(paragraph), "");
-  }
-  lines.push(`${ABOUT.quickBitsLead} ${ABOUT.quickBits.join("; ")}.`);
-
-  lines.push("", "## FAQ");
-  for (const item of FAQ.items) {
-    lines.push("", `### ${item.question}`, "", item.answer);
   }
 
   lines.push(

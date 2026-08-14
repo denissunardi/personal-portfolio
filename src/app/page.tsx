@@ -1,4 +1,3 @@
-import { About } from "@/components/sections/about";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Experience } from "@/components/sections/experience";
 

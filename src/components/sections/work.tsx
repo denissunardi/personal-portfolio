@@ -25,7 +25,6 @@ export function Work() {
           id="work"
           eyebrow={WORK.header.eyebrow}
           heading={WORK.header.heading}
-          subhead={WORK.header.subhead}
         />
 
         <ul

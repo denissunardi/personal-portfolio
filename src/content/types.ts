@@ -30,6 +30,7 @@ export type Photo = {
 export type AvatarTone = "orange" | "pink" | "violet" | "emerald";
 
 export type AvatarSource =
+  | { kind: "photo"; src: StaticImageData; alt: string }
   | { kind: "initials"; name: string; tone: AvatarTone };
 
 export type BrandIconName = "github" | "x" | "linkedin";
@@ -38,6 +39,7 @@ export interface BandHeaderContent {
   readonly id: SectionId;
   readonly eyebrow: string;
   readonly heading: string;
+  readonly subhead?: string;
 }
 
 export interface SiteContent {
@@ -154,6 +156,11 @@ export interface TrustMark {
   readonly href?: `https://${string}`;
   readonly logo?: StaticImageData;
   readonly size?: TrustMarkSize;
+}
+
+export interface TrustBarContent {
+  readonly intro: string;
+  readonly marks: readonly TrustMark[];
 }
 
 export type CapabilityIconName = "bot" | "layers" | "pen-tool";
