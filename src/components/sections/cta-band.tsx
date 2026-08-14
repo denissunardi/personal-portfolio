@@ -15,14 +15,11 @@ import { cn } from "@/lib/cn";
 
 const ROW_ICONS = { email: Mail, phone: Phone, linkedin: ExternalLink } as const;
 
-// Section id is `contact`, not `cta`: the hero, nav and footer all link to
-// #contact. mailto:/tel: render as raw <a> elements, never Link, which would
-// falsely announce "(opens in a new tab)" for a mail or dialer handoff.
 export function CtaBand() {
   return (
-    <Section id="contact" surface="soft" labelledBy={headingId("contact")}>
-      <Container>
-        <Card surface="none" className="bg-white p-12 shadow-sm rounded-xl">
+    <Section id="contact" surface="soft" labelledBy={headingId("contact")} className="bg-white-50 !p-0">
+      <Container className="py-24">
+        <Card surface="none" className="bg-white p-12 shadow-sm rounded-xl mx-4">
           <div className="flex flex-col items-center text-center">
             <Badge>{CTA.eyebrow}</Badge>
 

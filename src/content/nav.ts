@@ -7,14 +7,12 @@ export const NAV = {
   wordmark: { label: "denissunardi.dev", href: "/#hero" },
   landmarkLabel: "Main",
   // Five links is the ceiling — six start wrapping on tablet widths. Stack,
-  // FAQ and Contact are left out here but stay in the footer, which keeps
   // every section linked (check-anchors verifies this).
   links: [
     { label: "Services", href: "#services" },
     { label: "Work", href: "#work" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
-    { label: "FAQ", href: "#faq" },
   ],
   cv: {
     label: "Download CV",

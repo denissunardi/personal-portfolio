@@ -7,7 +7,6 @@ import { SkipLink } from "@/components/primitives/skip-link";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
 import { SITE } from "@/content/site";
-import { buildFaqGraph, buildPersonGraph, jsonLdScript } from "@/lib/json-ld";
 
 import { fontDisplay, fontMono, fontSans } from "./fonts";
 import "./globals.css";
@@ -92,14 +91,7 @@ export default function RootLayout({
         {/* Native script, not next/script: JSON-LD is data, not executable code
             (per the Next json-ld guide). Two separate graphs so a malformed FAQ
             block cannot invalidate the Person block in one validator pass. */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLdScript(buildPersonGraph()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLdScript(buildFaqGraph()) }}
-        />
+
         <Analytics />
         <SpeedInsights />
       </body>

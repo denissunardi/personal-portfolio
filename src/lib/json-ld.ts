@@ -1,4 +1,4 @@
-import { FAQ } from "@/content/faq";
+
 import { HERO } from "@/content/hero";
 import { SITE } from "@/content/site";
 import { TECH } from "@/content/tech";
@@ -9,7 +9,6 @@ type JsonLdGraph = Record<string, unknown>;
 // cannot mistake them for #rrggbb literals.
 const PERSON_ID = `${SITE.url}/#person`;
 const PROFILE_ID = `${SITE.url}/#profile`;
-const FAQ_ID = `${SITE.url}/#faqpage`;
 
 // StaticImageData.src is a build-hashed /_next/static/media/... path. Absolutising
 // it is required: schema.org consumers reject relative URLs.
@@ -47,18 +46,6 @@ export function buildPersonGraph(): JsonLdGraph {
   };
 }
 
-export function buildFaqGraph(): JsonLdGraph {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": FAQ_ID,
-    mainEntity: FAQ.items.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
-}
 
 // JSON.stringify does not escape "<", so a "</script>" inside any content string
 // would close the tag early. The Next JSON-LD guide's documented scrub.

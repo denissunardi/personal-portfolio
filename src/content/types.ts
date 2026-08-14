@@ -7,11 +7,9 @@ import type { IsoMonth, IsoMonthOrPresent } from "@/lib/duration";
 export const SECTION_IDS = [
   "hero",
   "services",
-  "about",
   "work",
   "stack",
   "experience",
-"faq",
   "contact"
 ] as const;
 
@@ -179,15 +177,6 @@ export interface RichLink {
 
 export type RichParagraph = readonly (string | RichLink)[];
 
-export interface AboutContent {
-  readonly header: BandHeaderContent;
-  readonly photo?: Photo | undefined;
-  readonly paragraphs: readonly RichParagraph[];
-  readonly quickBitsLead: string;
-  readonly quickBits: readonly string[];
-  readonly closing: string;
-}
-
 export interface Project {
   readonly id: string;
   readonly name: string;
@@ -251,18 +240,6 @@ export interface Testimonial {
 export interface TestimonialsContent {
   readonly header: BandHeaderContent;
   readonly items: readonly Testimonial[];
-}
-
-export interface FaqItem {
-  readonly id: string;
-  readonly question: string;
-  readonly answer: string;
-}
-
-export interface FaqContent {
-  readonly header: BandHeaderContent;
-  readonly groupName: string;
-  readonly items: readonly FaqItem[];
 }
 
 export interface ContactRow {

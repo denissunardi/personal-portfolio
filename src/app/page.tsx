@@ -1,7 +1,7 @@
 import { About } from "@/components/sections/about";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Experience } from "@/components/sections/experience";
-import { Faq } from "@/components/sections/faq";
+
 import { Hero } from "@/components/sections/hero";
 import { Services } from "@/components/sections/services";
 import { TechStack } from "@/components/sections/tech-stack";
@@ -18,7 +18,6 @@ export default function Home() {
       <Hero />
       <Services />
       <Work />
-      <About />
       <TechStack />
       <Experience />
       <CtaBand />

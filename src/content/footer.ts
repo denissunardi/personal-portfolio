@@ -20,7 +20,6 @@ export const FOOTER = {
         { label: "About", href: "#about" },
         { label: "Stack", href: "#stack" },
         { label: "Experience", href: "#experience" },
-        { label: "FAQ", href: "#faq" },
         { label: "Contact", href: "#contact" },
       ],
     },
