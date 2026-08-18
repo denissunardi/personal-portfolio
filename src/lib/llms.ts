@@ -1,4 +1,3 @@
-import { CAPABILITIES } from "@/content/capabilities";
 import { EXPERIENCE } from "@/content/experience";
 import { SITE } from "@/content/site";
 import { TECH } from "@/content/tech";
@@ -13,7 +12,7 @@ const absolute = (path: string): string => new URL(path, SITE.url).toString();
 // build with no second place to keep in sync.
 export function buildLlmsTxt(): string {
   const lines: string[] = [
-    `# ${SITE.name} — ${SITE.jobTitle}`,
+    `# ${SITE.name} | ${SITE.jobTitle}`,
     "",
     `> ${SITE.description}`,
     "",
@@ -23,13 +22,7 @@ export function buildLlmsTxt(): string {
     `- Location: ${SITE.locationLabel}`,
     `- Availability: ${SITE.availability.label}`,
     "",
-    "## Services",
-    "",
   ];
-
-  for (const item of CAPABILITIES.items) {
-    lines.push(`- **${item.title}** — ${item.body}`);
-  }
 
   lines.push("", "## Selected work", "", `${WORK.header.heading}`, "");
   for (const project of WORK.projects) {

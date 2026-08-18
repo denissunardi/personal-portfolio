@@ -4,18 +4,14 @@ export const FOOTER = {
   landmarkLabel: "Site footer",
   brand: {
     wordmark: "denissunardi.dev",
-    tagline: "Fullstack Developer. Backend-focused, integration-ready.",
+    tagline: "Fullstack developer, integration-ready.",
     location: "Jakarta, Indonesia · WIB (UTC+7)",
   },
   columns: [
     {
       id: "sections",
       heading: "Sections",
-      // This column holds the only links to #services and #stack anywhere on
-      // the site — remove a row and that section becomes unreachable
-      // (check-anchors fails).
       links: [
-        { label: "Services", href: "#services" },
         { label: "Work", href: "#work" },
         { label: "Stack", href: "#stack" },
         { label: "Experience", href: "#experience" },

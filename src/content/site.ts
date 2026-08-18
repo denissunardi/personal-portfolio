@@ -8,10 +8,10 @@ export const SITE = {
   jobTitle: "Fullstack Developer",
   url: "https://denissunardi.dev",
   title:
-    "Denis Sunardi Samsico — Fullstack Developer (Laravel, Golang & APIs) in Jakarta",
+    "Denis Sunardi Samsico | Fullstack Developer in Jakarta",
   titleTemplate: "%s | Denis Sunardi Samsico",
   description:
-    "Backend-focused fullstack developer in Jakarta. Nearly a decade building web apps, REST APIs, real-time WebSocket services, payment integrations, trading platforms and CMS with Laravel, CodeIgniter and Golang. Open to roles and freelance projects.",
+    "Fullstack developer in Jakarta, strongest in the backend. Nearly a decade building web apps, REST APIs, real-time WebSocket services, payment integrations, trading platforms and CMS with Laravel, CodeIgniter and Golang. Open to roles and freelance projects.",
   keywords: [
     "Denis Sunardi Samsico",
     "Fullstack Developer",
@@ -28,13 +28,13 @@ export const SITE = {
     "Web Developer Jakarta",
     "Software Engineer Indonesia",
   ],
-  ogTitle: "Denis Sunardi Samsico — I build the backend that makes products work.",
+  ogTitle: "Denis Sunardi Samsico: Fullstack developer, ready for any project.",
   ogDescription:
-    "Backend-focused fullstack developer in Jakarta. Nearly a decade building APIs, real-time services, payment integrations and trading platforms with Laravel, CodeIgniter and Golang. Open to roles and freelance projects.",
-  ogImageAlt: "Denis Sunardi Samsico, fullstack developer — denissunardi.dev",
-  twitterTitle: "Denis Sunardi Samsico — I build the backend that makes products work.",
+    "Fullstack developer in Jakarta, strongest in the backend. Nearly a decade building APIs, real-time services, payment integrations and trading platforms with Laravel, CodeIgniter and Golang. Open to roles and freelance projects.",
+  ogImageAlt: "Denis Sunardi Samsico, fullstack developer at denissunardi.dev",
+  twitterTitle: "Denis Sunardi Samsico: Fullstack developer, ready for any project.",
   twitterDescription:
-    "Backend-focused fullstack developer in Jakarta. Laravel, CodeIgniter & Golang. APIs, payments and real-time systems. Open to roles and freelance projects.",
+    "Fullstack developer in Jakarta, strongest in the backend. Laravel, CodeIgniter & Golang. APIs, payments and real-time systems. Open to roles and freelance projects.",
   twitterHandle: "@denissunardi",
   locale: "en_US",
   themeColor: "white",

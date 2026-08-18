@@ -4,14 +4,14 @@ import type { HeroContent } from "./types";
 
 export const HERO = {
   id: "hero",
-  eyebrow: "Fullstack Developer · Backend-focused · 10+ yrs",
+  eyebrow: "Fullstack Developer · 10+ yrs",
   headlineLead: "Hi, I'm Denis",
   // Separate from headlineLead so it can sit in its own span — animated by
   // CSS, hidden from screen readers.
   wave: "👋",
-  headlineClaim: "I build the backend that makes products work.",
+  headlineClaim: "Fullstack developer, ready for any project you bring.",
   subhead:
-    "Backend-focused fullstack developer. Laravel and CodeIgniter for the web, Golang for the fast bits, and a decade of shipping APIs, payment integrations, real-time trading systems and CMS platforms that businesses run on every day. Based in Jakarta, working with teams anywhere.",
+    "I build products end to end, with real strength in the backend. A decade of shipping APIs, payment integrations, real-time trading systems and platforms that businesses run on every day. Based in Jakarta, working with teams anywhere.",
   primary: { label: "Get in touch", href: "#contact" },
   secondary: { label: "See my work", href: "#work" },
   location: "Jakarta, Indonesia · WIB (UTC+7)",
@@ -25,12 +25,12 @@ export const HERO = {
   terminal: {
     title: "denis@dev",
     lines: [
-      { kind: "prompt", text: "find a backend dev who ships" },
+      { kind: "prompt", text: "find a fullstack dev who ships" },
       { kind: "result", text: "Found 1 match: Denis Sunardi" },
-      { kind: "branch", text: "10+ yrs · PHP · Golang · APIs" },
-      { kind: "branch", text: "Laravel · CodeIgniter · Gin" },
-      { kind: "branch", text: "payment gateway integration" },
-      { kind: "branch", text: "real-time trading · WebSocket" },
+      { kind: "branch", text: "10+ yrs · fullstack · backend strength" },
+      { kind: "branch", text: "APIs · payments · trading platforms" },
+      { kind: "branch", text: "apps the business runs on" },
+      { kind: "branch", text: "end to end, ready for any project" },
       { kind: "status", text: "Open to roles & freelance" },
       { kind: "prompt", text: "hire him", cursor: true },
     ],

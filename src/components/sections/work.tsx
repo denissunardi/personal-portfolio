@@ -19,7 +19,7 @@ export function Work() {
   const rest = WORK.projects.filter((project) => project !== flagship);
 
   return (
-    <Section id="work" surface="canvas" labelledBy={headingId("work")}>
+    <Section id="work" surface="soft" labelledBy={headingId("work")}>
       <Container>
         <BandHeader
           id="work"

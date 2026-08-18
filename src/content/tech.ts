@@ -7,19 +7,9 @@ export const TECH = {
   header: {
     id: "stack",
     eyebrow: "Stack",
-    heading: "The tools I reach for.",
+    heading: "Tools I've shipped with, and open to more.",
   },
   groups: [
-    {
-      id: "frameworks",
-      title: "Frameworks",
-      descriptor: "Where most of the work gets done.",
-      items: [
-        { name: "Laravel", href: "https://laravel.com/" },
-        { name: "CodeIgniter", href: "https://codeigniter.com/" },
-        { name: "Gin", href: "https://gin-gonic.com/" },
-      ],
-    },
     {
       id: "backend",
       title: "Backend",
@@ -27,6 +17,9 @@ export const TECH = {
       items: [
         { name: "PHP", href: "https://www.php.net/" },
         { name: "Golang", href: "https://go.dev/" },
+        { name: "Laravel", href: "https://laravel.com/" },
+        { name: "CodeIgniter", href: "https://codeigniter.com/" },
+        { name: "Gin", href: "https://gin-gonic.com/" },
       ],
     },
     {
@@ -36,6 +29,7 @@ export const TECH = {
       items: [
         { name: "MySQL", href: "https://www.mysql.com/" },
         { name: "PostgreSQL", href: "https://www.postgresql.org/" },
+        { name: "Redis", href: "https://redis.io/" },
       ],
     },
     {
@@ -43,6 +37,8 @@ export const TECH = {
       title: "Frontend",
       descriptor: "Enough to build the screen when I need to.",
       items: [
+        { name: "React", href: "https://react.dev/" },
+        { name: "Vue 3", href: "https://vuejs.org/" },
         {
           name: "HTML",
           href: "https://developer.mozilla.org/en-US/docs/Web/HTML",

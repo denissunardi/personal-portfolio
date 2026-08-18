@@ -222,7 +222,7 @@ export const overrides = {
   "terminal-cursor": "select-none text-white",
   // CTA band: a white card lifted off the soft band surface with a subtle
   // shadow and a larger radius than the default control-radius.
-  "cta-card": "bg-white shadow-sm rounded-xl",
+  "cta-card": "bg-white border border-neutral-200 shadow-sm rounded-xl",
   // Project gallery modal: near-black overlay backdrop and the buttons that
   // float on it. bg-black/95 gives 95% opacity; the button variants use
   // black at 50%/70% for default/hover.

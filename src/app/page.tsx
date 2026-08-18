@@ -2,7 +2,6 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { Experience } from "@/components/sections/experience";
 
 import { Hero } from "@/components/sections/hero";
-import { Services } from "@/components/sections/services";
 import { TechStack } from "@/components/sections/tech-stack";
 import { Work } from "@/components/sections/work";
 
@@ -15,7 +14,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Services />
       <Work />
       <TechStack />
       <Experience />

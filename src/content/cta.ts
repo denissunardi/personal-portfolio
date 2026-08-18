@@ -7,7 +7,7 @@ export const CTA = {
   eyebrow: "Contact",
   heading: "Hiring, or have something to build?",
   subhead:
-    "Whether you're a recruiter with a role or a team with a project, tell me what you need. I'll tell you honestly whether I'm the right fit — and what it would take.",
+    "Whether you're a recruiter with a role or a team with a project, tell me what you need. I'll tell you honestly whether I'm the right fit, and what it would take.",
   primary: {
     label: "Get in touch",
     href: "mailto:Deniaz.94@gmail.com",

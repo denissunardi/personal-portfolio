@@ -6,7 +6,6 @@ import type { IsoMonth, IsoMonthOrPresent } from "@/lib/duration";
 // order, each one has a matching link somewhere, and no extra ids slip in.
 export const SECTION_IDS = [
   "hero",
-  "services",
   "work",
   "stack",
   "experience",
@@ -161,20 +160,6 @@ export interface TrustMark {
 export interface TrustBarContent {
   readonly intro: string;
   readonly marks: readonly TrustMark[];
-}
-
-export type CapabilityIconName = "bot" | "layers" | "pen-tool";
-
-export interface Capability {
-  readonly id: string;
-  readonly icon: CapabilityIconName;
-  readonly title: string;
-  readonly body: string;
-}
-
-export interface CapabilitiesContent {
-  readonly header: BandHeaderContent;
-  readonly items: readonly Capability[];
 }
 
 export interface RichLink {

@@ -9,7 +9,6 @@ export const NAV = {
   // Five links is the ceiling — six start wrapping on tablet widths. Stack,
   // every section linked (check-anchors verifies this).
   links: [
-    { label: "Services", href: "#services" },
     { label: "Work", href: "#work" },
     { label: "Experience", href: "#experience" },
   ],
