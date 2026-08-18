@@ -1,6 +1,6 @@
 import type { ExperienceContent } from "./types";
 
-// No duration strings stored â€” they are computed from these dates on every
+// No duration strings stored — they are computed from these dates on every
 // build, so they never go stale. No logo assets yet either: ExperienceCard
 // drops the logo column when a role has none.
 export const EXPERIENCE = {
@@ -17,9 +17,10 @@ export const EXPERIENCE = {
       startISO: "2025-12",
       endISO: "2026-07",
       bullets: [
-        "Built backend services and WebSocket-based integrations for a commodity futures trading platform where live market data has to stay in sync.",
-        "Supported OJK audit prep by explaining IT system flows for a cryptocurrency trading client; built backend services and WebSocket integrations for a commodity futures trading platform; integrated a payment gateway; built data pages with advanced filtering.",
-        "Integrated a secure payment method and aligned system implementation with business requirements for regulatory compliance.",
+        "Supported OJK audit preparation by explaining IT system flows and application processes for a cryptocurrency trading client.",
+        "Developed backend services and WebSocket-based integrations for a commodity futures trading platform.",
+        "Integrated a payment gateway into a project to provide users with a secure and efficient payment method.",
+        "Collaborated with stakeholders to align system implementation with operational and business requirements.",
       ],
     },
     {
@@ -29,11 +30,12 @@ export const EXPERIENCE = {
       startISO: "2019-01",
       endISO: "2024-06",
       bullets: [
+        "Managed user registration and activation data for third-party applications to support smooth onboarding processes.",
+        "Integrated payment systems with third-party APIs to support transaction workflows.",
+        "Optimized transaction reporting pages to improve page load speed and user experience.",
+        "Improved the internal finance dashboard for better usability and operational support.",
         "Developed and optimized an inventory management system for merchant owners, improving stock control and operational efficiency.",
-        "Integrated third-party payment APIs for transaction processing.",
-        "Optimized transaction reporting pages for improved performance.",
-        "Redesigned dashboard pages with advanced filtering to enable users to view data by specific criteria.",
-        "Managed user registration and activation data for third-party applications.",
+        "Redesigned dashboard pages with advanced filtering features, allowing users to display data based on specific criteria.",
       ],
     },
     {
@@ -43,9 +45,10 @@ export const EXPERIENCE = {
       startISO: "2017-11",
       endISO: "2019-01",
       bullets: [
-        "Developed new features and implemented SMS verification for educational platforms.",
-        "Integrated front-end work with back-end systems.",
-        "Built Laravel APIs serving both mobile and web clients.",
+        "Integrated front-end components with backend systems for web applications.",
+        "Developed and implemented new features for educational platforms to improve functionality and user experience.",
+        "Implemented SMS verification features for web applications.",
+        "Developed APIs for mobile and web applications using Laravel.",
       ],
     },
     {
@@ -55,9 +58,9 @@ export const EXPERIENCE = {
       startISO: "2015-04",
       endISO: "2017-10",
       bullets: [
-        "Designed and built a content management system with full CRUD functionality.",
-        "Delivered company-profile and campaign websites for branding purposes.",
-        "Integrated front-end work into back-end systems.",
+        "Integrated front-end components developed by front-end teams into backend systems.",
+        "Designed and developed a content management system (CMS) for web applications with create, read, update, and delete functionality.",
+        "Built company profile and campaign websites to support branding and promotional activities.",
       ],
     },
   ],

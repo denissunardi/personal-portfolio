@@ -1,4 +1,4 @@
-import headshot from "@/assets/images/sagar-headshot.jpg";
+import headshot from "@/assets/images/me.jpeg";
 
 import type { HeroContent } from "./types";
 
@@ -9,9 +9,9 @@ export const HERO = {
   // Separate from headlineLead so it can sit in its own span — animated by
   // CSS, hidden from screen readers.
   wave: "👋",
-  headlineClaim: "Fullstack developer, ready for any project you bring.",
+  headlineClaim: "Fullstack developer, ready for any project you bring, built faster with AI tooling.",
   subhead:
-    "I build products end to end, with real strength in the backend. A decade of shipping APIs, payment integrations, real-time trading systems and platforms that businesses run on every day. Based in Jakarta, working with teams anywhere.",
+    "I build products end to end, with real strength in the backend. A decade of shipping APIs, payment integrations, real-time trading systems and platforms that businesses run on every day, with AI tooling in the flow to ship faster. Based in Jakarta, working with teams anywhere.",
   primary: { label: "Get in touch", href: "#contact" },
   secondary: { label: "See my work", href: "#work" },
   location: "Jakarta, Indonesia · WIB (UTC+7)",
@@ -30,7 +30,7 @@ export const HERO = {
       { kind: "branch", text: "10+ yrs · fullstack · backend strength" },
       { kind: "branch", text: "APIs · payments · trading platforms" },
       { kind: "branch", text: "apps the business runs on" },
-      { kind: "branch", text: "end to end, ready for any project" },
+      { kind: "branch", text: "end to end · AI-assisted" },
       { kind: "status", text: "Open to roles & freelance" },
       { kind: "prompt", text: "hire him", cursor: true },
     ],

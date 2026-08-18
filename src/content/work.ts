@@ -104,8 +104,8 @@ export const WORK = {
       name: "Arthaprada for Remittance Dashboard System",
       featured: false,
       description:
-        "A production-grade, multi-tenant remittance and money-transfer operations platform for PT ARI, an Indonesian payment company. It manages the full lifecycle of remittance operations, from merchant onboarding and KYC verification through daily deposit and disbursement processing to regulatory compliance reporting. The role-based dashboard serves four personas: Administrator, Customer Service, Finance, and Merchant, each with a tailored interface and permission-scoped access: KYC and account-status approval workflows, deposit and disbursement management with cut-off time logic, a self-service merchant portal with live balances, Indonesian AML/CFT watchlist screening, and compliance audit logging on every API action.",
-      role: "Fullstack: built the Laravel API (auth/OTP, RBAC, encrypted PII, AML watchlist screening, cut-off processing) and a Vue 3 + Vuetify SPA serving four roles, including a ~91K-record regional dataset, compliance audit logging, and a self-service merchant portal with real-time balances.",
+        "A remittance platform for an Indonesian payment company that makes it easy to send and receive money. It handles merchant onboarding with identity verification, deposit and disbursement processing with daily cut-off timing, live-balance tracking, and a self-service portal where partners check balances and run transfers on their own.",
+      role: "Fullstack: built the Laravel API (auth/OTP, RBAC, cut-off processing) and a Vue 3 + Vuetify SPA serving four roles and a self-service merchant portal with real-time balances.",
       stack: ["Laravel", "Vue 3", "Vuetify", "MySQL", "Redis", "Sanctum"],
       screenshot: {
         src: ARTHAPRADA_SCREENSHOTS[0],
