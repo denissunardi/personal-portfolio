@@ -3,7 +3,7 @@ import type { ElementType, ReactNode } from "react";
 import * as tokens from "@/design/tokens";
 import { cn } from "@/lib/cn";
 
-export type CardSurface = "muted" | "outlined";
+export type CardSurface = "muted" | "outlined" | "none";
 export type CardElement = "div" | "article" | "li" | "figure";
 
 export type CardProps = {
@@ -18,9 +18,11 @@ export type CardProps = {
 
 // A card is either grey (bg-neutral-100) with no border and no shadow, or
 // white with a gray-200 border. Never a grey surface with a border on top.
+// "none" applies no surface token — the caller supplies all styling (cta band).
 const SURFACE = {
   muted: tokens.components["feature-card"],
   outlined: tokens.components["feature-icon-card"],
+  none: "",
 } as const satisfies Record<CardSurface, string>;
 
 export function Card({

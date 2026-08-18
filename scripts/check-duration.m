@@ -1,0 +1,69 @@
+import assert from "node:assert/strict";
+
+import {
+  formatDuration,
+  formatMonth,
+  formatRange,
+  monthsBetween,
+} from "../src/lib/duration.ts";
+
+const now = new Date(); // Aug 2026 in this env
+
+// PT. Integrated Synergy Systems
+assert.equal(monthsBetween("2015-04", "2017-10", now), 31);
+assert.equal(formatDuration(31), "2 yrs 7 mos");
+
+// Expecto
+assert.equal(monthsBetween("2017-11", "2019-01", now), 15);
+assert.equal(formatDuration(15), "1 yr 3 mos");
+
+// Pawoon
+assert.equal(monthsBetween("2019-01", "2024-06", now), 65);
+assert.equal(formatDuration(65), "5 yrs 5 mos");
+
+// Darmawan Aryansyah Teknologi
+assert.equal(monthsBetween("2025-12", "2026-07", now), 7);
+assert.equal(formatDuration(7), "7 mos");
+
+// Total career span from first day (Apr 2015) to Aug 2026 inclusive
+const careerMonths = monthsBetween("2015-04", "present", now);
+assert.ok(
+  careerMonths >= 120,
+  `career is ${careerMonths} months, expected >= 120`,
+);
+assert.ok(
+  careerMonths < 144,
+  `career is ${careerMonths} months, expected < 144`,
+);
+
+assert.equal(formatMonth("2015-04"), "Apr 2015");
+assert.equal(formatMonth("2017-10"), "Oct 2017");
+assert.equal(formatMonth("2026-07"), "Jul 2026");
+
+assert.equal(formatDuration(0), "0 mos");
+assert.equal(formatDuration(1), "1 mo");
+assert.equal(formatDuration(12), "1 yr");
+assert.equal(formatDuration(13), "1 yr 1 mo");
+
+assert.equal(
+  formatRange("2015-04", "2017-10", now),
+  "Apr 2015 – Oct 2017 · 2 yrs 7 mos",
+);
+assert.equal(
+  formatRange("2017-11", "2019-01", now),
+  "Nov 2017 – Jan 2019 · 1 yr 3 mos",
+);
+assert.equal(
+  formatRange("2019-01", "2024-06", now),
+  "Jan 2019 – Jun 2024 · 5 yrs 5 mos",
+);
+assert.equal(
+  formatRange("2025-12", "2026-07", now),
+  "Dec 2025 – Jul 2026 · 7 mos",
+);
+
+console.log(`check-duration: OK (career = ${formatDuration(careerMonths)})`);
+console.log(`  darmawan     ${formatRange("2025-12", "2026-07", now)}`);
+console.log(`  pawoon       ${formatRange("2019-01", "2024-06", now)}`);
+console.log(`  expecto      ${formatRange("2017-11", "2019-01", now)}`);
+console.log(`  int. synergy ${formatRange("2015-04", "2017-10", now)}`);

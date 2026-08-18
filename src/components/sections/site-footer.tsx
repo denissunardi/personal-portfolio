@@ -1,4 +1,5 @@
 import { BrandGitHub } from "@/components/icons/brand/github";
+import { BrandLinkedIn } from "@/components/icons/brand/linkedin";
 import { BrandX } from "@/components/icons/brand/x";
 import { Container } from "@/components/primitives/container";
 import { Link } from "@/components/primitives/link";
@@ -16,6 +17,7 @@ const BRAND_GLYPHS: Record<
 > = {
   GitHub: BrandGitHub,
   X: BrandX,
+  LinkedIn: BrandLinkedIn,
 };
 
 const ROW_CLASS = cn(
@@ -125,19 +127,8 @@ export function SiteFooter() {
           <Text variant="body-sm" tone="on-dark-soft" className="text-pretty">
             {FOOTER.copyright.symbol} {NOW.getUTCFullYear()}{" "}
             {FOOTER.copyright.owner} {FOOTER.copyright.separator}{" "}
-            {FOOTER.copyright.segments.map((segment) =>
-              typeof segment === "string" ? (
-                segment
-              ) : (
-                <Link
-                  key={segment.href}
-                  href={segment.href}
-                  variant="unstyled"
-                  className={cn(ROW_CLASS, "underline underline-offset-4")}
-                >
-                  {segment.text}
-                </Link>
-              ),
+            {(FOOTER.copyright.segments as readonly string[]).map((segment) =>
+              segment
             )}
           </Text>
         </div>

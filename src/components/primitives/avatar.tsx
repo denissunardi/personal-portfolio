@@ -51,7 +51,11 @@ export function Avatar({
         className,
       )}
     >
-      {source.initials}
+      {source.name
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((word) => word[0])
+        .join("")}
     </span>
   );
 }

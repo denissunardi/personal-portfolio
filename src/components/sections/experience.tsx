@@ -16,7 +16,6 @@ export function Experience() {
           id="experience"
           eyebrow={EXPERIENCE.header.eyebrow}
           heading={EXPERIENCE.header.heading}
-          subhead={EXPERIENCE.header.subhead}
         />
 
         {/* max-w-4xl inside the wider container: at full width bullet lines

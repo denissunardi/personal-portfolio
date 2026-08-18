@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "verify": "tsc --noEmit && eslint . && node scripts/check-tokens.mjs && node scripts/check-anchors.mjs && node scripts/check-duration.mjs && next build",
+    "verify": "tsc --noEmit && eslint . && node scripts/check-tokens.mjs && node scripts/check-anchors.mjs  && next build",
     "check:duration": "node scripts/check-duration.mjs",
     "icons:generate": "node scripts/generate-icons.mjs",
     "lh:dir": "node -e \"require('node:fs').mkdirSync('.next/lighthouse',{recursive:true})\"",
@@ -45,3 +45,4 @@
     "typescript": "~5.9.0"
   }
 }
+

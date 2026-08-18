@@ -1,160 +1,130 @@
-import fiskilShot from "@/assets/images/work/fiskil.png";
-import lanternShot from "@/assets/images/work/lantern.png";
-import mokobokoShot from "@/assets/images/work/mokoboko.png";
-import pepehousingShot from "@/assets/images/work/pepehousing.png";
-import wingieShot from "@/assets/images/work/wingie.png";
+import type { StaticImageData } from "next/image";
 
 import type { WorkContent } from "./types";
 
-// Screenshot alt text never repeats the project name — the card's heading sits
-// right below the image, and a screen reader would say the name twice.
+import orderbookLogo from "@/assets/images/project/orderbook.png";
+import ordersLogo from "@/assets/images/project/orders.png";
+import summaryLogo from "@/assets/images/project/summary.png";
+import coinxMain from "@/assets/images/project/coinx-main.png";
+import coinxMarket from "@/assets/images/project/coinx-market.png";
+import coinxHome from "@/assets/images/project/coinx-home.png";
+import pawoonMain from "@/assets/images/project/pawoon-main.png";
+import pawoonIntegrations from "@/assets/images/project/pawoon-integrations.png";
+import pawoonReports from "@/assets/images/project/pawoon-reports.png";
+import arthapradaMain from "@/assets/images/project/arthaprada/main.png";
+import arthapradaClients from "@/assets/images/project/arthaprada/clients.png";
+import arthapradaHome from "@/assets/images/project/arthaprada/home.png";
+import fortrustMain from "@/assets/images/project/fortrust/main.png";
+
+// Screenshots for NDA/internal projects. Futures platform has 4 images with
+// first image displayed in card, remaining images accessible via click-to-open
+// gallery carousel with left/right arrows. See types.ts for Project shape —
+// all image fields can be omitted if no screenshots available.
+const FUTURE_SCREENSHOTS: Readonly<readonly StaticImageData[]> = [
+  orderbookLogo,
+  ordersLogo,
+  summaryLogo,
+];
+
+// CoinX carousel: main.png is the card's default/first image, then market.png,
+// then home.png in the click-to-open gallery.
+const COINX_SCREENSHOTS: Readonly<readonly StaticImageData[]> = [
+  coinxMain,
+  coinxMarket,
+  coinxHome,
+];
+
+// Pawoon carousel: main.png first, then integrations.png, then reports.png.
+const PAWOON_SCREENSHOTS: Readonly<readonly StaticImageData[]> = [
+  pawoonMain,
+  pawoonIntegrations,
+  pawoonReports,
+];
+
+// Arthaprada carousel: main.png first, then clients.png, then home.png.
+const ARTHAPRADA_SCREENSHOTS: Readonly<readonly StaticImageData[]> = [
+  arthapradaMain,
+  arthapradaClients,
+  arthapradaHome,
+];
+
 export const WORK = {
   header: {
     id: "work",
     eyebrow: "Work",
-    heading: "Products I helped build.",
-    subhead:
-      "All five are live, in production, with real users. Click through and poke around.",
+    heading: "Systems I've built and shipped.",
   },
-  // MokoBoko is first and featured: true, so the band renders it full-width
-  // without sorting. The rest are newest first.
+  // The commodity futures platform is featured: true, so the band renders it
+  // full-width. The rest follow newest-first.
   projects: [
     {
-      id: "mokoboko",
-      name: "MokoBoko",
-      domain: "mokoboko.xyz",
-      href: "https://mokoboko.xyz",
+      id: "futures-trading",
+      name: "Futures Trading System",
       featured: true,
       description:
-        "Class booking platform for a boutique fitness studio in Lisbon. Browse the live schedule, book classes, buy packs or subscriptions, and pay online.",
-      role: "Full stack — the whole platform: booking app, admin console, a shared component library, and an Express API with Stripe payments and automated emails.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Radix UI",
-        "React Query",
-        "Express",
-        "Sequelize",
-        "PostgreSQL",
-        "Supabase",
-        "Stripe",
-      ],
+        "A high-performance commodity futures trading platform where prices move by the second and latency can't be tolerated. I architected the backend services and WebSocket integrations that stream live market data directly to traders' screens, ensuring every price tick arrives in real time. The system supports complex order management with multiple order types, position tracking, and risk controls. I also helped prepare the platform for regulatory scrutiny by documenting system architecture and walking auditors through data flows, demonstrating how the platform maintains accuracy under pressure.",
+      role: "Backend / Fullstack: designed and implemented Golang microservices using Gin framework, built WebSocket-based real-time data feeds with PostgreSQL persistence, integrated payment gateway for funding operations, created advanced filtering dashboards for transaction reporting, and coordinated stakeholder alignment on operational and compliance requirements.",
+      stack: ["React", "Golang", "Gin", "PostgreSQL", "Redis", "WebSocket"],
       screenshot: {
-        src: mokobokoShot,
-        alt: "Class booking page with a week-strip date picker and timed class cards showing instructor, price and a Book class button.",
+        src: FUTURE_SCREENSHOTS[0],
+        alt: "Futures Trading System: Main Dashboard",
       },
-      linkLabel: "Visit mokoboko.xyz",
+      screenshots: FUTURE_SCREENSHOTS.slice(1),
     },
     {
-      id: "fiskil",
-      name: "Fiskil",
-      domain: "fiskil.com",
-      href: "https://www.fiskil.com",
+      id: "coinx",
+      name: "CoinX",
       featured: false,
       description:
-        "Consumer data sharing infrastructure for banks and energy providers. One API platform for secure, consumer-permissioned data access at scale.",
-      role: "Full stack — the customer console and auth flows, the Go services on Google Cloud behind them, and a docs platform with an AI assistant and MCP server.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Radix UI",
-        "React Query",
-        "Vite",
-        "Go",
-        "PostgreSQL",
-        "Firebase",
-        "Google Cloud",
-        "MCP",
-        "Jest",
-        "Cypress",
-      ],
+        "A cryptocurrency trading platform built to make digital asset trading fast, clear, and trustworthy. I worked across product and engineering, aligning requirements, shaping the trading experience, and making sure the platform stayed accurate and easy to use as it scaled.",
+      role: "Product Specialist: aligned product requirements with engineering, refined the trading and market experience, and coordinated delivery across the platform.",
+      stack: ["Product Management", "Requirements Alignment", "Trading Platform", "Crypto"],
       screenshot: {
-        src: fiskilShot,
-        alt: "Marketing hero headlined 'Enable Secure, Scalable Consumer Data Sharing' above a strip of partner logos.",
+        src: COINX_SCREENSHOTS[0],
+        alt: "CoinX: Trading Platform Main Dashboard",
       },
-      linkLabel: "Visit fiskil.com",
+      screenshots: COINX_SCREENSHOTS.slice(1),
     },
     {
-      id: "lantern",
-      name: "Lantern",
-      domain: "withlantern.com",
-      href: "https://withlantern.com",
+      id: "pawoon",
+      name: "Pawoon",
       featured: false,
       description:
-        "An AI marketing platform. It builds a model of your target customers, then specialized agents research, personalize, and launch campaigns across channels.",
-      role: "Full stack — product UI and the services behind it, from the React Flow workflow builder to Express and Fastify APIs and the Temporal jobs powering the AI agents.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "React Flow",
-        "Express",
-        "Fastify",
-        "Temporal",
-        "Vercel AI SDK",
-        "OpenAI",
-        "PostgreSQL",
-        "Supabase",
-        "Redis",
-      ],
+        "The POS and inventory systems merchant owners run their shops on. I built and optimized an inventory management system that gave owners real control over their stock, integrated payment systems through third-party APIs, and redesigned the dashboards with advanced filtering so people could slice their data exactly how they needed it.",
+      role: "Fullstack: inventory management, third-party payment API integration, transaction-report performance tuning, and an internal finance dashboard rebuilt for everyday operational use.",
+      stack: ["Laravel", "CodeIgniter", "PHP", "MySQL", "jQuery", "Vue 3"],
       screenshot: {
-        src: lanternShot,
-        alt: "Dark starfield hero reading 'Agentic Based Marketing' above a product panel pairing an AI chat with a company research table.",
+        src: PAWOON_SCREENSHOTS[0],
+        alt: "Pawoon: POS & Inventory Dashboard",
       },
-      linkLabel: "Visit withlantern.com",
+      screenshots: PAWOON_SCREENSHOTS.slice(1),
     },
     {
-      id: "wingie",
-      name: "Wingie",
-      domain: "wingie.com",
-      href: "https://www.wingie.com",
+      id: "arthaprada",
+      name: "Arthaprada for Remittance Dashboard System",
       featured: false,
       description:
-        "A flight comparison and booking marketplace. Search fares across airlines, compare what's actually worth flying, and check out in a few clicks.",
-      role: "Full stack — a React and TypeScript interface on an Express and PostgreSQL API, with Redux holding the search and booking state together.",
-      stack: [
-        "React",
-        "TypeScript",
-        "Redux",
-        "Styled Components",
-        "React Bootstrap",
-        "Express",
-        "PostgreSQL",
-        "Firebase",
-      ],
+        "A production-grade, multi-tenant remittance and money-transfer operations platform for PT ARI, an Indonesian payment company. It manages the full lifecycle of remittance operations, from merchant onboarding and KYC verification through daily deposit and disbursement processing to regulatory compliance reporting. The role-based dashboard serves four personas: Administrator, Customer Service, Finance, and Merchant, each with a tailored interface and permission-scoped access: KYC and account-status approval workflows, deposit and disbursement management with cut-off time logic, a self-service merchant portal with live balances, Indonesian AML/CFT watchlist screening, and compliance audit logging on every API action.",
+      role: "Fullstack: built the Laravel API (auth/OTP, RBAC, encrypted PII, AML watchlist screening, cut-off processing) and a Vue 3 + Vuetify SPA serving four roles, including a ~91K-record regional dataset, compliance audit logging, and a self-service merchant portal with real-time balances.",
+      stack: ["Laravel", "Vue 3", "Vuetify", "MySQL", "Redis", "Sanctum"],
       screenshot: {
-        src: wingieShot,
-        alt: "Flight search homepage with a 'Find Cheap Flights' form over a beach photo, above a grid of popular route cards with fares.",
+        src: ARTHAPRADA_SCREENSHOTS[0],
+        alt: "Arthaprada for Remittance Dashboard Main",
       },
-      linkLabel: "Visit wingie.com",
+      screenshots: ARTHAPRADA_SCREENSHOTS.slice(1),
     },
     {
-      id: "pepehousing",
-      name: "Pepehousing",
-      domain: "pepehousing.com",
-      href: "https://pepehousing.com",
+      id: "fortrust",
+      name: "Fortrust for Study Abroad CRM",
       featured: false,
       description:
-        "Rent a flat or a room in Poland. Browse verified listings, message the landlord directly, and pay online — securely, start to finish.",
-      role: "Front end — a Next.js application with a typed data layer on Redux Toolkit, and every component documented in Storybook.",
-      stack: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Redux Toolkit",
-        "Storybook",
-      ],
+        "The lead-management and admissions platform behind Fortrust, an Indonesian study-abroad consultancy guiding students to universities across Australia, the UK, Canada, the US, and more. I built the CRM that connects the counseling team to prospective students, scoring inbound leads by the activity they actually do on the site, routing the right prospects to follow-up, and running the qualification questionnaire that turns an interested visitor into a confirmed customer. I also added SMS OTP verification to the login and every confidential screen, so the team could access student records with confidence.",
+      role: "Backend: lead-scoring by on-site activity, a follow-up qualification questionnaire, and SMS OTP verification on login and confidential features.",
+      stack: ["Laravel", "PHP", "MySQL", "jQuery", "SMS Verification"],
       screenshot: {
-        src: pepehousingShot,
-        alt: "Rental homepage hero headlined 'Accommodation for students and expats', with a search-by-city bar and stat cards for tenants and properties.",
+        src: fortrustMain,
+        alt: "Fortrust for Study Abroad CRM",
       },
-      linkLabel: "Visit pepehousing.com",
     },
   ],
-} as const satisfies WorkContent;
+} satisfies WorkContent;

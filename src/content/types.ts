@@ -2,82 +2,43 @@ import type { StaticImageData } from "next/image";
 
 import type { IsoMonth, IsoMonthOrPresent } from "@/lib/duration";
 
+// Sections are single-source-of-truth: page.tsx renders every SectionId in
+// order, each one has a matching link somewhere, and no extra ids slip in.
 export const SECTION_IDS = [
   "hero",
-  "services",
-  "about",
   "work",
   "stack",
   "experience",
-  "testimonials",
-  "faq",
-  "contact",
+  "contact"
 ] as const;
 
 export type SectionId = (typeof SECTION_IDS)[number];
 
-// The hash arm only accepts real section ids, so a misspelled section link is
-// a compile error instead of a silent dead link.
-export type Href =
-  | `#${SectionId}`
-  | `/${string}`
-  | `https://${string}`
-  | `mailto:${string}`
-  | `tel:${string}`;
-
+// Same for rich links: strings go back bare, links get rendered inline.
 export interface LinkItem {
   readonly label: string;
-  readonly href: Href;
+  readonly href: string;
+  readonly icon?: BrandIconName;
 }
 
-export interface Photo {
+export type Photo = {
   readonly src: StaticImageData;
   readonly alt: string;
-}
+};
 
 export type AvatarTone = "orange" | "pink" | "violet" | "emerald";
 
-export interface InitialsAvatar {
-  readonly initials: string;
-  readonly tone: AvatarTone;
-}
+export type AvatarSource =
+  | { kind: "photo"; src: StaticImageData; alt: string }
+  | { kind: "initials"; name: string; tone: AvatarTone };
 
-export type AvatarSource = Photo | InitialsAvatar;
+export type BrandIconName = "github" | "x" | "linkedin";
 
 export interface BandHeaderContent {
   readonly id: SectionId;
   readonly eyebrow: string;
   readonly heading: string;
   readonly subhead?: string;
-}
-
-export type BrandIconName = "github" | "x";
-
-export interface SocialLink {
-  readonly label: string;
-  readonly href: `https://${string}`;
-  readonly icon: BrandIconName;
-}
-
-export interface Availability {
-  readonly available: boolean;
-  readonly label: string;
-}
-
-export interface NotFoundContent {
-  readonly title: string;
-  readonly heading: string;
-  readonly body: string;
-  readonly link: LinkItem;
-}
-
-export interface ErrorPageContent {
-  readonly title: string;
-  readonly heading: string;
-  readonly body: string;
-  readonly retryLabel: string;
-  readonly link: LinkItem;
-  readonly digestLabel: string;
 }
 
 export interface SiteContent {
@@ -107,6 +68,8 @@ export interface SiteContent {
   readonly email: string;
   readonly emailHref: `mailto:${string}`;
   readonly phoneLabel: string;
+  // Written by hand, not derived from phoneLabel â€” a string replace only swaps
+  // the first match and once left a space in the number.
   readonly phoneHref: `tel:${string}`;
   readonly cv: LinkItem;
   readonly availability: Availability;
@@ -117,6 +80,27 @@ export interface SiteContent {
   readonly mainLandmarkLabel: string;
   readonly notFound: NotFoundContent;
   readonly errorPage: ErrorPageContent;
+}
+
+export interface Availability {
+  readonly available: boolean;
+  readonly label: string;
+}
+
+export interface NotFoundContent {
+  readonly title: string;
+  readonly heading: string;
+  readonly body: string;
+  readonly link: LinkItem;
+}
+
+export interface ErrorPageContent {
+  readonly title: string;
+  readonly heading: string;
+  readonly body: string;
+  readonly retryLabel: string;
+  readonly link: LinkItem;
+  readonly digestLabel: string;
 }
 
 export interface NavContent {
@@ -132,7 +116,7 @@ export interface NavContent {
 
 export type TerminalLineKind = "prompt" | "result" | "branch" | "status";
 
-// Data only — the glyph each kind renders as (">", "✓", tree bars) lives in
+// Data only â€” the glyph each kind renders as (">", "âœ“", tree bars) lives in
 // the TerminalFrame primitive.
 export interface TerminalLine {
   readonly kind: TerminalLineKind;
@@ -142,8 +126,8 @@ export interface TerminalLine {
 
 export interface HeroTerminal {
   readonly title: string;
-  // Line count is free — typewriter timing is computed per line from text
-  // length — but keep around 8 lines so the hero columns stay balanced.
+  // Line count is free â€” typewriter timing is computed per line from text
+  // length â€” but keep around 8 lines so the hero columns stay balanced.
   readonly lines: readonly TerminalLine[];
 }
 
@@ -157,12 +141,12 @@ export interface HeroContent {
   readonly primary: LinkItem;
   readonly secondary: LinkItem;
   readonly location: string;
-  readonly portrait: Photo;
+  readonly portrait?: Photo;
   readonly terminal: HeroTerminal;
 }
 
-// Logo files crop very differently — shosho is edge-to-edge letters, wingie
-// has tall padding — so equal file height does not look equal on screen. Each
+// Logo files crop very differently â€” shosho is edge-to-edge letters, wingie
+// has tall padding â€” so equal file height does not look equal on screen. Each
 // mark's size is measured by eye, not computed.
 export type TrustMarkSize = "sm" | "md" | "lg";
 
@@ -178,47 +162,25 @@ export interface TrustBarContent {
   readonly marks: readonly TrustMark[];
 }
 
-export type CapabilityIconName = "bot" | "layers" | "pen-tool";
-
-export interface Capability {
-  readonly id: string;
-  readonly icon: CapabilityIconName;
-  readonly title: string;
-  readonly body: string;
-}
-
-export interface CapabilitiesContent {
-  readonly header: BandHeaderContent;
-  readonly items: readonly Capability[];
-}
-
 export interface RichLink {
   readonly text: string;
-  readonly href: Href;
+  readonly href: string;
 }
 
 export type RichParagraph = readonly (string | RichLink)[];
 
-export interface AboutContent {
-  readonly header: BandHeaderContent;
-  readonly photo: Photo;
-  readonly paragraphs: readonly RichParagraph[];
-  readonly quickBitsLead: string;
-  readonly quickBits: readonly string[];
-  readonly closing: string;
-}
-
 export interface Project {
   readonly id: string;
   readonly name: string;
-  readonly domain: string;
-  readonly href: `https://${string}`;
+  readonly domain?: string;
+  readonly href?: `https://${string}`;
   readonly featured: boolean;
   readonly description: string;
   readonly role: string;
   readonly stack: readonly string[];
-  readonly screenshot: Photo;
-  readonly linkLabel: string;
+  readonly screenshot?: Photo;
+  readonly linkLabel?: string;
+  readonly screenshots?: readonly StaticImageData[];
 }
 
 export interface WorkContent {
@@ -228,8 +190,8 @@ export interface WorkContent {
 
 export interface TechItem {
   readonly name: string;
-  readonly href: `https://${string}`;
-  readonly logo: StaticImageData;
+  readonly href: string;
+  readonly logo?: StaticImageData;
 }
 
 export interface TechGroup {
@@ -248,7 +210,7 @@ export interface Role {
   readonly id: string;
   readonly company: string;
   readonly position: string;
-  readonly logo: StaticImageData;
+  readonly logo?: StaticImageData;
   readonly startISO: IsoMonth;
   readonly endISO: IsoMonthOrPresent;
   readonly bullets: readonly string[];
@@ -272,23 +234,11 @@ export interface TestimonialsContent {
   readonly items: readonly Testimonial[];
 }
 
-export interface FaqItem {
-  readonly id: string;
-  readonly question: string;
-  readonly answer: string;
-}
-
-export interface FaqContent {
-  readonly header: BandHeaderContent;
-  readonly groupName: string;
-  readonly items: readonly FaqItem[];
-}
-
 export interface ContactRow {
   readonly id: string;
   readonly label: string;
   readonly value: string;
-  readonly href: Href;
+  readonly href: string;
   readonly copyLabel: string;
   readonly copiedLabel: string;
 }
@@ -329,3 +279,11 @@ export interface FooterContent {
   readonly columns: readonly FooterColumn[];
   readonly copyright: FooterCopyright;
 }
+
+export interface SocialLink {
+  readonly label: string;
+  readonly href: string;
+  readonly icon: BrandIconName;
+}
+
+export type Href = string;

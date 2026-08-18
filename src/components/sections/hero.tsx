@@ -1,7 +1,6 @@
 import { MapPin } from "lucide-react";
 
-import { BrandGitHub } from "@/components/icons/brand/github";
-import { BrandX } from "@/components/icons/brand/x";
+import { BrandLinkedIn } from "@/components/icons/brand/linkedin";
 import { Avatar } from "@/components/primitives/avatar";
 import { Badge } from "@/components/primitives/badge";
 import { headingId } from "@/components/primitives/band-header";
@@ -13,7 +12,6 @@ import { Section } from "@/components/primitives/section";
 import { SocialList } from "@/components/primitives/social-list";
 import { TerminalFrame } from "@/components/primitives/terminal-frame";
 import { Text } from "@/components/primitives/text";
-import { TrustBar } from "@/components/sections/trust-bar";
 import { HERO } from "@/content/hero";
 import { SITE } from "@/content/site";
 import * as tokens from "@/design/tokens";
@@ -24,8 +22,7 @@ import { cn } from "@/lib/cn";
 // component imports. Brand-prefixed because lucide-react already exports X
 // for the close glyph.
 const GLYPHS = {
-  github: BrandGitHub,
-  x: BrandX,
+  linkedin: BrandLinkedIn,
 } as const;
 
 // The one band that does not use BandHeader: it owns the page's single <h1>.
@@ -47,7 +44,13 @@ export function Hero() {
             )}
           >
             <div className="flex items-center gap-3">
-              <Avatar source={HERO.portrait} loading="eager" sizes="36px" />
+              {HERO.portrait ? (
+                <Avatar
+                  source={{ kind: "photo", src: HERO.portrait.src, alt: HERO.portrait.alt }}
+                  loading="eager"
+                  sizes="36px"
+                />
+              ) : null}
               <Badge>{HERO.eyebrow}</Badge>
             </div>
 
@@ -149,8 +152,6 @@ export function Hero() {
           </div>
         </div>
       </Container>
-
-      <TrustBar />
     </Section>
   );
 }
