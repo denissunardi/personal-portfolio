@@ -34,7 +34,7 @@ export function buildLlmsTxt(): string {
   lines.push("", "## Experience", "");
   for (const role of EXPERIENCE.roles) {
     lines.push(
-      `### ${role.company} — ${role.position} (${formatRange(role.startISO, role.endISO, NOW)})`,
+      `### ${role.company} | ${role.position} (${formatRange(role.startISO, role.endISO, NOW)})`,
       "",
     );
     for (const bullet of role.bullets) {

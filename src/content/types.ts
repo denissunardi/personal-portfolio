@@ -68,7 +68,7 @@ export interface SiteContent {
   readonly email: string;
   readonly emailHref: `mailto:${string}`;
   readonly phoneLabel: string;
-  // Written by hand, not derived from phoneLabel â€” a string replace only swaps
+  // Written by hand, not derived from phoneLabel — a string replace only swaps
   // the first match and once left a space in the number.
   readonly phoneHref: `tel:${string}`;
   readonly cv: LinkItem;
@@ -116,7 +116,7 @@ export interface NavContent {
 
 export type TerminalLineKind = "prompt" | "result" | "branch" | "status";
 
-// Data only â€” the glyph each kind renders as (">", "âœ“", tree bars) lives in
+// Data only — the glyph each kind renders as (">", "✓", tree bars) lives in
 // the TerminalFrame primitive.
 export interface TerminalLine {
   readonly kind: TerminalLineKind;
@@ -126,8 +126,8 @@ export interface TerminalLine {
 
 export interface HeroTerminal {
   readonly title: string;
-  // Line count is free â€” typewriter timing is computed per line from text
-  // length â€” but keep around 8 lines so the hero columns stay balanced.
+  // Line count is free — typewriter timing is computed per line from text
+  // length — but keep around 8 lines so the hero columns stay balanced.
   readonly lines: readonly TerminalLine[];
 }
 
@@ -145,8 +145,8 @@ export interface HeroContent {
   readonly terminal: HeroTerminal;
 }
 
-// Logo files crop very differently â€” shosho is edge-to-edge letters, wingie
-// has tall padding â€” so equal file height does not look equal on screen. Each
+// Logo files crop very differently — shosho is edge-to-edge letters, wingie
+// has tall padding — so equal file height does not look equal on screen. Each
 // mark's size is measured by eye, not computed.
 export type TrustMarkSize = "sm" | "md" | "lg";
 

@@ -109,7 +109,7 @@ export const overrides = {
   "band-canvas": "bg-white",
   "band-soft": "bg-gray-50",
   "band-dark": "bg-neutral-950",
-  "band-padding": "py-24",
+  "band-padding": "py-12",
   "band-padding-compact": "py-12",
   container: "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
   "focus-ring":

@@ -54,7 +54,11 @@ export const TECH = {
       id: "tooling",
       title: "Tooling",
       descriptor: "Version control and the day-to-day.",
-      items: [{ name: "Git", href: "https://git-scm.com/" }],
+      items: [
+        { name: "Git", href: "https://git-scm.com/" },
+        { name: "Cursor", href: "https://cursor.com/" },
+        { name: "AI Pair Programming", href: "https://github.com/features/copilot" },
+      ],
     },
   ],
 } satisfies TechContent;
